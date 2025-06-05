@@ -3,7 +3,6 @@
 * H01: Como usuário, quero me cadastrar com RA e senha para acessar meu painel.
 * H02: Como usuário, quero gerenciar o login para acessar meus dados.
 * H03: Como usuário, quero recuperar minha senha via e-mail institucional.
-* H04: Como aluno, quero registrar horas de atividades extracurriculares já cumpridas.
 * H05: Como aluno, quero adicionar um certificado à atividade extracurricular. 
 * H06: Como aluno, quero registrar uma nova atividade extracurricular.
 * H07: Como aluno, quero ver qual o status da atividade.
