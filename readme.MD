@@ -1,4 +1,4 @@
-# Passo a Passo para rodar a aplicação
+# Passos para rodar a aplicação
 
 ## Instale os requisitos
 
@@ -12,7 +12,7 @@ npm install
 docker-compose up
 ```
 
-## Inice a aplicação
+## Inicie a aplicação
 
 ```
 npm run dev
