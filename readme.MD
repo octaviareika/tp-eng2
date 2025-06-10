@@ -39,4 +39,24 @@ Esta plataforma foi desenvolvida para ajudar os alunos a registrar, acompanhar e
    - Envie atividades para análise
    - Aguarde confirmação
 
+# Passos para rodar a aplicação
+
+## Instale os requisitos
+
+```
+npm install
+```
+
+## Rode o banco
+
+```
+docker-compose up
+```
+
+## Inicie a aplicação
+
+```
+npm run dev
+```
+
 **© 2024 Universidade Federal de Ouro Preto - Todos os direitos reservados**
