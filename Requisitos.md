@@ -18,21 +18,31 @@
 * H17: Como funcionário, quero adicionar um comentário à uma atividade.
 
 ## Casos de Uso
-* H10a:  Gerar histórico do usuário
+* Geração de histórico do usuário
   * Ator: Aluno
-  * Fluxo principal
+  * Fluxo principal (H10a):
     * Aluno acessa o sistema.
     * Aluno seleciona a seção histórico completo.
-    * Aluno escolhe o formato do documento.
+    * Aluno escolhe o formato do documento disponível.
     * Aluno seleciona a opção de gerar histórico.
+  * Fluxo alternativo (H10b - Histórico vazio):
+    * Sistema detecta 0 atividades
+    * Exibe mensagem: "Nenhuma atividade registrada"
+    * Bloqueia botão de geração
  
-* H16: Alteração do status da atividade
+* Alteração do status da atividade
   * Ator: Funcionário
-  * Fluxo principal
+  * Fluxo principal (H16a - Aprovação):
     * Funcionário acessa o sistema.
     * Funcionário verifica a lista de atividades pendentes.
     * Funcionário seleciona uma atividade para ser analisada.
-    * Funcionário baixa e verifica comprovante/certificado.
-    * Funcionário aprova ou reprova uma atividade de acordo com sua análise.
-    * Funcionário deixa um comentário na atividade analisada.
+    * Funcionário baixa e verifica comprovante/certificado (H15).
+    * Funcionário aprova uma atividade de acordo com sua análise.
+    * Sistema registra alteração e notifica aluno (H13)
+  * Fluxo alternativo (H16b - Reprovação):
+    * Funcionário seleciona "Reprovar"
+    * Sistema exige campo de comentário (H17)
+    * Funcionário insere feedback detalhado
+    * Funcionário seleciona "Salvar alterações"
+    * Sistema registra alteração e notifica aluno (H13)
     
