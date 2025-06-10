@@ -39,6 +39,16 @@ Esta plataforma foi desenvolvida para ajudar os alunos a registrar, acompanhar e
    - Envie atividades para análise
    - Aguarde confirmação
 
+# Colaboradores
+- [Cecília Peret](https://github.com/octaviareika)
+- [Maria Clara Silva Perpetuo](https://github.com/kaka27022)
+- [Luiz Humberto Fonseca](https://github.com/LuizHumbertoF)
+- [Thiago Liuth](https://github.com/TLiuth)
+- [Yasmin Altino](https://github.com/yasminaltino)
+
+# Requisitos
+[Página de Requisitos](https://github.com/octaviareika/tp-eng2/blob/main/Requisitos.md)
+
 # Passos para rodar a aplicação
 
 ## Instale os requisitos
