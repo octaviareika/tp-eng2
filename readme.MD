@@ -43,6 +43,7 @@ Esta plataforma foi desenvolvida para ajudar os alunos a registrar, acompanhar e
 - [Cecília Peret](https://github.com/octaviareika)
 - [Maria Clara Silva Perpetuo](https://github.com/kaka27022)
 - [Luiz Humberto Fonseca](https://github.com/LuizHumbertoF)
+- [Camila Aparecida](https://github.com/millow-w)
 - [Thiago Liuth](https://github.com/TLiuth)
 - [Yasmin Altino](https://github.com/yasminaltino)
 
