@@ -15,4 +15,13 @@
 * H14: Como funcionário, quero ver as atividades pendentes do aluno.
 * H15: Como funcionário, quero baixar e abrir o certificado da atividade.
 * H16: Como funcionário, quero alterar o status da atividade como aprovado ou reprovado.
-* H17: Como funcionário, quero adicionar um comentário à uma atividade. 
+* H17: Como funcionário, quero adicionar um comentário à uma atividade.
+
+## Casos de Uso
+* H10a:  Gerar histórico do usuário
+* Ator: Aluno
+* Fluxo principal
+  * Aluno acessa o sistema.
+  * Aluno seleciona a seção histórico completo.
+  * Aluno escolhe o formato do documento.
+  * Aluno seleciona a opção de gerar históric.
