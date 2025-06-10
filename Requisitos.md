@@ -19,9 +19,14 @@
 
 ## Casos de Uso
 * H10a:  Gerar histórico do usuário
-* Ator: Aluno
-* Fluxo principal
-  * Aluno acessa o sistema.
-  * Aluno seleciona a seção histórico completo.
-  * Aluno escolhe o formato do documento.
-  * Aluno seleciona a opção de gerar históric.
+  * Ator: Aluno
+  * Fluxo principal
+    * Aluno acessa o sistema.
+    * Aluno seleciona a seção histórico completo.
+    * Aluno escolhe o formato do documento.
+    * Aluno seleciona a opção de gerar histórico.
+ 
+* H16: Alteração do status da atividade
+  * Ator: Funcionário
+  * Fluxo principal
+    * Funcionário
