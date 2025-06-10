@@ -29,4 +29,10 @@
 * H16: Alteração do status da atividade
   * Ator: Funcionário
   * Fluxo principal
-    * Funcionário
+    * Funcionário acessa o sistema.
+    * Funcionário verifica a lista de atividades pendentes.
+    * Funcionário seleciona uma atividade para ser analisada.
+    * Funcionário baixa e verifica comprovante/certificado.
+    * Funcionário aprova ou reprova uma atividade de acordo com sua análise.
+    * Funcionário deixa um comentário na atividade analisada.
+    
