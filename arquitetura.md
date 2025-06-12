@@ -7,7 +7,7 @@ Este documento descreve a visão inicial da arquitetura do nosso projeto, ele de
 - **Nome do Projeto**: Horas Extracurriculares
 - **Objetivos arquiteturais**: Alcançar alto desempenho, segurança, escalabilidade e privacidade dos dados.
 
-## 2. Partes Interessadas (Stakeholders)
+## Partes Interessadas (Stakeholders)
 
 - Equipe de Desenvolvimento (Backend, Frontend)
 - UFOP (Universidade Federal de Ouro Preto)
@@ -20,6 +20,10 @@ Este documento descreve a visão inicial da arquitetura do nosso projeto, ele de
 - **Linguagem/Framework FrontEnd:** React.js/CSS/Typescript
 
 - **Controle de Versão:** GitHub
+
+## Diagrama Geral do Sistema
+
+![Diagrama](/Images/diagrama-arquitetura.jpeg)
 
 ## Componentes principais
 
