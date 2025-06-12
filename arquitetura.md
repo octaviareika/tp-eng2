@@ -23,7 +23,7 @@ Este documento descreve a visão inicial da arquitetura do nosso projeto, ele de
 
 ## Diagrama Geral do Sistema
 
-![Diagrama](/Images/diagrama-arquitetura.jpeg)
+<img src="/Images/diagrama-arquitetura.jpeg" alt="Diagrama da Aplicação" width="400" height="300">
 
 ## Componentes principais
 
