@@ -1,0 +1,152 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .sidebar {
+    width: 15%;
+    background-color: #971919;
+    color: white;
+    padding: 7px;
+    height: 100vh;
+    position: fixed;
+  }
+  .sidebar .profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+    margin-bottom: 40px;
+    justify-content: center;
+  }
+
+  .my-profile {
+    padding-top: 10px;
+    font-size: 25px;
+  }
+  .sidebar .profile div {
+    width: 40px;
+    height: 40px;
+    background-color: #d3d3d3;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  .sidebar ul li {
+    margin-bottom: 15px;
+  }
+  .sidebar ul li a {
+    color: #d3d3d3;
+    text-decoration: none;
+  }
+  .sidebar ul li a:hover {
+    color: white;
+  }
+  .sidebar .footer {
+    margin-top: 40px;
+    color: #d3d3d3;
+  }
+  .sidebar .footer img {
+    margin-bottom: 10px;
+  }
+  .content {
+    margin-left: 18%;
+    padding: 20px;
+  }
+  .content h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .form-container {
+    background-color: #d3d3d3;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  .form-container div {
+    margin-bottom: 20px;
+  }
+  .form-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .form-container input,
+  .form-container select,
+  .form-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .form-container .flex {
+    display: flex;
+    justify-content: space-between;
+  }
+  .form-container .flex div {
+    width: 48%;
+  }
+  .form-container textarea {
+    height: 120px;
+  }
+  .form-container .upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+  }
+  .form-container .upload span {
+    color: #808080;
+    font-size: 24px;
+  }
+  .form-container button {
+    background-color: #b22222;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .form-container button:hover {
+    background-color: #8b0000;
+  }
+
+  .list {
+    background-color: rgb(143, 143, 143);
+      border: 1px solid #999898;
+      padding: 10px;
+      border-radius: 25px; /* Borda circular */
+      color: white;
+      /*deixar a fonte pro centro*/
+      text-align: center;
+      margin-top: 40px;
+  }
+
+  .footer {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-ufop {
+    width: 100px;
+    height: 200px;
+    /*centralizar*/
+    display: block;
+    margin: 0 auto;
+
+  }
+
+  .alt-ufop {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .size-icon {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+  }
