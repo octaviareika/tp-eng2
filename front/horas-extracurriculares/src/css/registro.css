@@ -127,15 +127,16 @@ body {
 
   .list {
     background-color: rgb(143, 143, 143);
-      border: 1px solid #999898;
-      padding: 10px;
-      margin-left: 7px;
-      margin-right: 7px;
-      border-radius: 25px; /* Borda circular */
-      color: white;
-      /*deixar a fonte pro centro*/
-      text-align: center;
-      margin-top: 40px;
+    border: 1px solid #999898;
+    padding: 10px;
+    margin-left: 7px;
+    margin-right: 7px;
+    border-radius: 25px; /* Borda circular */
+    color: white;
+    /*deixar a fonte pro centro*/
+    text-align: center;
+    margin-top: 40px;
+    cursor: pointer;
   }
 
   .footer {
@@ -172,4 +173,10 @@ body {
   .upload {
     height: 120px;
     background-color: white;
+    cursor: pointer;
+  }
+
+  .upload-icon {
+    width: 100px;
+    height: 50px;
   }

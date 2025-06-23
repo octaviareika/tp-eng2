@@ -20,7 +20,6 @@ const Sidebar = () => (
           </ul>
           <div className="footer">
               <img className="logo-ufop" src={logoUfop} alt="Logo da UFOP" />
-            <p className="alt-ufop">UFOP<br />Universidade Federal<br />de Ouro Preto</p>
           </div>
       
     </div>
