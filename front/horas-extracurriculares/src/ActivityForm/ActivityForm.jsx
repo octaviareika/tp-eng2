@@ -32,7 +32,7 @@ const ActivityForm = () => (
           <div>
             <label>Anexar certificado/comprovante:</label>
             <div className="upload">
-              <span>⬇</span>
+                <div><input type="file" id="arquivo" name="arquivo" /></div>
             </div>
           </div>
           <button>Adicionar Atividade</button>

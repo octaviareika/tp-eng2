@@ -2,13 +2,25 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
   }
+
+  .painelAluno {
+    background-color:rgb(143, 143, 143);
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid white;
+    margin: 0px 0px 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .sidebar {
-    width: 15%;
+    width: 17%;
     background-color: #971919;
     color: white;
-    padding: 7px;
+    padding: 0px;
     height: 100vh;
     position: fixed;
+    overflow-y: auto;
   }
   .sidebar .profile {
     display: flex;
@@ -117,6 +129,8 @@ body {
     background-color: rgb(143, 143, 143);
       border: 1px solid #999898;
       padding: 10px;
+      margin-left: 7px;
+      margin-right: 7px;
       border-radius: 25px; /* Borda circular */
       color: white;
       /*deixar a fonte pro centro*/
@@ -149,4 +163,13 @@ body {
     width: 100px;
     height: 100px;
     margin-right: 10px;
+  }
+
+  #arquivo {
+    display: none;
+  }
+
+  .upload {
+    height: 120px;
+    background-color: white;
   }
