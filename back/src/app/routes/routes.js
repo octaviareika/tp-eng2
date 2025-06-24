@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.routes = void 0;
+const express_1 = require("express");
+const AlunoController_1 = require("../controllers/AlunoController");
+const CategoriaController_1 = require("../controllers/CategoriaController");
+const AtividadeController_1 = require("../controllers/AtividadeController");
+const routes = (0, express_1.Router)();
+exports.routes = routes;
+const alunoController = new AlunoController_1.AlunoController();
+const categoriaController = new CategoriaController_1.CategoriaController();
+const atividadeController = new AtividadeController_1.AtividadeController();
+routes.post("/aluno", alunoController.create);
+routes.post("/Categoria", categoriaController.create);
+routes.post("/Atividade", atividadeController.create);

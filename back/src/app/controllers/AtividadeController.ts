@@ -7,6 +7,12 @@ import {
 class AtividadeController {
   create = async (req: Request, res: Response) => {
     try {
+      // Se veio arquivo, pega o caminho salvo
+      let documentoComprovanteUrl = undefined;
+      if (req.file) {
+        documentoComprovanteUrl = req.file.path;
+      }
+
       const {
         titulo,
         descricao,
@@ -15,7 +21,6 @@ class AtividadeController {
         dataFim,
         status,
         dataSubmissao,
-        documentoComprovanteUrl,
         observacoesAluno,
         alunoMatricula,
         categoriaNome,
@@ -39,7 +44,7 @@ class AtividadeController {
       const novaAtividade = await addAtividade({
         titulo,
         descricao,
-        horasSolicitadas,
+        horasSolicitadas: Number(horasSolicitadas),
         dataInicio,
         dataFim,
         status,
@@ -59,8 +64,6 @@ class AtividadeController {
 }
 
 export { AtividadeController };
-
-//   id: number;
 //   titulo: string;
 //   descricao: string;
 //   horasSolicitadas: number;
