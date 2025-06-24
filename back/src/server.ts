@@ -1,10 +1,14 @@
 import "reflect-metadata";
-import { AppDataSource } from "./data-source"; // ajuste o caminho se necessário
+import { AppDataSource } from "./database/data-source";
 import express from "express";
 
 const app = express();
 
+import { routes } from "./app/routes/routes";
+
 app.use(express.json());
+
+app.use(routes);
 
 AppDataSource.initialize()
   .then(() => {
