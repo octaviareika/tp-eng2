@@ -23,20 +23,26 @@ const ActivityForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('titulo', titulo);
-    formData.append("descricao", descricao);
-    formData.append("horasSolicitadas", 1);
-    formData.append("dataInicio", data);
-    formData.append("dataSubmissao", data);
-    formData.append("categoriaNome", tipo);
-    formData.append("alunoMatricula", "123456"); // Exemplo de matrícula
-    if (file) formData.append("documentoComprovanteUrl", file);
+    // Se você ainda precisar enviar o arquivo, terá que usar FormData
+    // Mas se for apenas metadados sobre o arquivo (como URL), pode usar JSON
+    const atividadeData = {
+      titulo,
+      descricao,
+      horasSolicitadas: 1,
+      dataInicio: data,
+      dataSubmissao: data,
+      categoriaNome: tipo,
+      alunoMatricula: "123456", // Exemplo de matrícula
+      documentoComprovanteUrl: file ? file.name : "" // Aqui você pode ajustar conforme sua API espera
+    };
 
     try {
       const response = await fetch("http://localhost:8080/Atividade", {
         method: "POST",
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(atividadeData),
       });
 
       if (response.ok) {
