@@ -75,9 +75,12 @@ const ActivityForm = () => {
               <option>Outro</option>
             </select>
           </div>
-          <div>
-            <label>Data:</label>
-            <input value={data} onChange={e => setData(e.target.value)} type="text" placeholder="Dia / Mês / Ano" />
+          <div className="datas">
+            <label>Data início:</label>
+            <input value={data} onChange={e => setData(e.target.value)} type="text" placeholder="Dia / Mês / Ano" className="input-dataI"/>
+
+            <label>Data fim:</label>
+            <input value={data} onChange={e => setData(e.target.value)} type="text" placeholder="Dia / Mês / Ano" className="input-dataF"/>
           </div>
         </div>
         <div>
