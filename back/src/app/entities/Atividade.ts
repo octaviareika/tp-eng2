@@ -26,9 +26,6 @@ export class Atividade {
   @Column({ type: "text" })
   descricao!: string;
 
-  @Column("int")
-  horasSolicitadas!: number;
-
   @Column({ type: "date" })
   dataInicio!: Date;
 
@@ -48,14 +45,14 @@ export class Atividade {
   @Column({ nullable: true })
   documentoComprovanteUrl?: string;
 
-  @Column({ type: "text", nullable: true })
-  observacoesAluno?: string;
+  @Column({ type: "int", nullable: true })
+  horasAprovadas?: number;
 
   @ManyToOne(() => Aluno, (aluno) => aluno.atividades)
   @JoinColumn({ name: "aluno_id" })
   aluno!: Aluno;
 
-  @ManyToOne(() => CategoriaAtividade, (categoria) => categoria.atividades)
+  @ManyToOne(() => CategoriaAtividade)
   @JoinColumn({ name: "categoria_id" })
   categoria!: CategoriaAtividade;
 }

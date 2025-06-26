@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { Atividade } from "./Atividade";
 
 @Entity("categorias_atividade")
 export class CategoriaAtividade {
@@ -14,7 +13,4 @@ export class CategoriaAtividade {
 
   @Column({ type: "int", nullable: true })
   horasMaximasAproveitaveis?: number;
-
-  @OneToMany(() => Atividade, (atividade) => atividade.categoria)
-  atividades!: Atividade[];
 }

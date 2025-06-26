@@ -5,5 +5,4 @@ export interface ICategoriaAtividade {
   nome: string;
   descricao?: string;
   horasMaximasAproveitaveis?: number;
-  atividadesIds?: number[];
 }

@@ -19,5 +19,5 @@ export class Aluno {
   curso!: string;
 
   @OneToMany(() => Atividade, (atividade) => atividade.aluno)
-  atividades!: Atividade[];
+  atividades?: Atividade[];
 }
