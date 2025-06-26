@@ -16,12 +16,9 @@ class AtividadeController {
       const {
         titulo,
         descricao,
-        horasSolicitadas,
         dataInicio,
         dataFim,
-        status,
-        dataSubmissao,
-        observacoesAluno,
+        documentoComprovanteUrl,
         alunoMatricula,
         categoriaNome,
       } = req.body;
@@ -29,28 +26,21 @@ class AtividadeController {
       if (
         !titulo ||
         !descricao ||
-        !horasSolicitadas ||
         !dataInicio ||
-        !dataSubmissao ||
         !categoriaNome ||
         !alunoMatricula
       ) {
         return res.status(400).json({
           message:
-            "Os seguintes campos são obrigatórios: titulo, descricao, horasSolicitadas, dataInicio, dataSubmissao, alunoId e categoriaId",
+            "Os seguintes campos são obrigatórios: titulo, descricao, dataInicio, alunoMatricula e categoriaNome",
         });
       }
-
       const novaAtividade = await addAtividade({
         titulo,
         descricao,
-        horasSolicitadas: Number(horasSolicitadas),
         dataInicio,
         dataFim,
-        status,
-        dataSubmissao,
         documentoComprovanteUrl,
-        observacoesAluno,
         alunoMatricula,
         categoriaNome,
       });
@@ -64,14 +54,3 @@ class AtividadeController {
 }
 
 export { AtividadeController };
-//   titulo: string;
-//   descricao: string;
-//   horasSolicitadas: number;
-//   dataInicio: Date;
-//   dataFim?: Date;
-//   status: StatusAtividade;
-//   dataSubmissao: Date;
-//   documentoComprovanteUrl?: string;
-//   observacoesAluno?: string;
-//   aluno: Aluno;
-//   categoria: CategoriaAtividade;

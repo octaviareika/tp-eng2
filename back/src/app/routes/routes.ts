@@ -12,7 +12,7 @@ const alunoController = new AlunoController();
 const categoriaController = new CategoriaController();
 const atividadeController = new AtividadeController();
 
-routes.post("/aluno", alunoController.create);
+routes.post("/Aluno", alunoController.create);
 routes.post("/Categoria", categoriaController.create);
 routes.post("/Atividade", upload.single("documentoComprovanteUrl"), atividadeController.create);
 

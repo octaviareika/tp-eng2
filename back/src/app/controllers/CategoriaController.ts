@@ -7,8 +7,7 @@ import {
 class CategoriaController {
   create = async (req: Request, res: Response): Promise<Response> => {
     try {
-      const { nome, descricao, horasMaximasAproveitaveis, atividadesIds } =
-        req.body;
+      const { nome, descricao, horasMaximasAproveitaveis } = req.body;
 
       if (!nome) {
         return res.status(400).json({ message: "O campo nome é obrigatório." });
@@ -18,7 +17,6 @@ class CategoriaController {
         nome,
         descricao,
         horasMaximasAproveitaveis,
-        atividadesIds,
       });
       return res.status(201).json(novaCategoria);
     } catch (error: any) {
