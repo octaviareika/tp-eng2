@@ -181,10 +181,13 @@ body {
     height: 50px;
   }
 
-  .input-data {
-    width: 150px !important;
-    height: 25px !important;
-    padding: 7px!important;
+  .textDataFim {
+    margin: 0px 15px 0px 15px;
+    text-align: center;
+  }
+
+  .textDataInicio {
+    margin: 0px 15px;
   }
 
   .datas {

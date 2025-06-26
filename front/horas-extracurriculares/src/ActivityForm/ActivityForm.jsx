@@ -6,7 +6,8 @@ const ActivityForm = () => {
   const [descricao, setDescricao] = useState("");
   const [titulo, setTitulo] = useState("");
   const [tipo, setTipo] = useState("");
-  const [data, setData] = useState("");
+  const [dataI, setDataI] = useState("");
+  const [dataF, setDataF] = useState("");
   const [file, setFile] = useState(null);
   const [mensagem, setMensagem] = useState("");
 
@@ -29,8 +30,8 @@ const ActivityForm = () => {
       titulo,
       descricao,
       horasSolicitadas: 1,
-      dataInicio: data,
-      dataSubmissao: data,
+      dataInicio: dataI,
+      dataFim: dataF,
       categoriaNome: tipo,
       alunoMatricula: "123456", // Exemplo de matrícula
       documentoComprovanteUrl: file ? file.name : "" // Aqui você pode ajustar conforme sua API espera
@@ -76,11 +77,11 @@ const ActivityForm = () => {
             </select>
           </div>
           <div className="datas">
-            <label>Data início:</label>
-            <input value={data} onChange={e => setData(e.target.value)} type="text" placeholder="Dia / Mês / Ano" className="input-dataI"/>
+            <label className="textDataInicio">Data início:</label>
+            <input value={dataI} onChange={e => setDataI(e.target.value)} type="text" placeholder="Dia / Mês / Ano" className="input-data"/>
 
-            <label>Data fim:</label>
-            <input value={data} onChange={e => setData(e.target.value)} type="text" placeholder="Dia / Mês / Ano" className="input-dataF"/>
+            <label className="textDataFim">Data fim:</label>
+            <input value={dataF} onChange={e => setDataF(e.target.value)} type="text" placeholder="Dia / Mês / Ano" className="input-data"/>
           </div>
         </div>
         <div>
