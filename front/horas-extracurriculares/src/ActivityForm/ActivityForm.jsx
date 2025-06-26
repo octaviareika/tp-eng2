@@ -33,9 +33,12 @@ const ActivityForm = () => {
       dataInicio: dataI,
       dataFim: dataF,
       categoriaNome: tipo,
-      alunoMatricula: "123456", // Exemplo de matrícula
-      documentoComprovanteUrl: file ? file.name : "" // Aqui você pode ajustar conforme sua API espera
+      alunoMatricula: "123456",
+      documentoComprovanteUrl: file ? file.name : "",
+      dataSubmissao: new Date().toISOString(), // Agora, no formato ISO (ex: 2025-06-26T03:00:00.000Z)
+      status: "Pendente" // ou qualquer valor que seu enum `StatusAtividade` aceite
     };
+
 
     try {
       const response = await fetch("http://localhost:8080/Atividade", {

@@ -9,7 +9,8 @@
     "migration:create": "npm run typeorm -- migration:create",
     "migration:run": "npm run typeorm -- migration:run",
     "migration:revert": "npm run typeorm -- migration:revert",
-    "migration:generate": "npm run typeorm -- migration:generate"
+    "migration:generate": "npm run typeorm -- migration:generate",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,19 +25,22 @@
   },
   "homepage": "https://github.com/octaviareika/tp-eng2#readme",
   "dependencies": {
-    "@types/express": "^4.17.23",
     "cors": "^2.8.5",
-    "express": "^4.21.2",
     "pg": "^8.16.0",
     "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.24"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jest": "^30.0.0",
     "@types/multer": "^1.4.13",
     "@types/node": "^22.15.29",
     "@types/pg": "^8.15.4",
+    "express": "^5.1.0",
+    "jest": "^30.0.3",
     "nodemon": "^3.1.10",
+    "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
