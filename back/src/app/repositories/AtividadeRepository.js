@@ -23,13 +23,10 @@ const addAtividade = async (dados) => {
     const novaAtividade = atividadeRepository.create({
         titulo: dados.titulo,
         descricao: dados.descricao,
-        horasSolicitadas: dados.horasSolicitadas,
         dataInicio: dados.dataInicio,
         dataFim: dados.dataFim,
         status: dados.status,
-        dataSubmissao: dados.dataSubmissao,
         documentoComprovanteUrl: dados.documentoComprovanteUrl,
-        observacoesAluno: dados.observacoesAluno,
         aluno: aluno,
         categoria: categoria,
     });

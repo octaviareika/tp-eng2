@@ -7,12 +7,6 @@ import {
 class AtividadeController {
   create = async (req: Request, res: Response) => {
     try {
-      // Se veio arquivo, pega o caminho salvo
-      let documentoComprovanteUrl = undefined;
-      if (req.file) {
-        documentoComprovanteUrl = req.file.path;
-      }
-
       const {
         titulo,
         descricao,

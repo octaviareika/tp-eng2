@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import uploadIcon from '../assets/logo-upload-removed.png';
+import uploadIcon from "../assets/logo-upload-removed.png";
 
 const ActivityForm = () => {
   const [fileName, setFileName] = useState("");
@@ -18,7 +18,7 @@ const ActivityForm = () => {
   };
 
   const handleUploadClick = () => {
-    document.getElementById('arquivo').click();
+    document.getElementById("arquivo").click();
   };
 
   const handleSubmit = async (e) => {
@@ -29,23 +29,24 @@ const ActivityForm = () => {
     const atividadeData = {
       titulo,
       descricao,
-      horasSolicitadas: 1,
       dataInicio: dataI,
       dataFim: dataF,
       categoriaNome: tipo,
-      alunoMatricula: "123456", // Exemplo de matrícula
-      documentoComprovanteUrl: file ? file.name : "" // Aqui você pode ajustar conforme sua API espera
+      alunoMatricula: "19.1.2021", // Exemplo de matrícula
+      documentoComprovanteUrl: file ? file.name : "", // Aqui você pode ajustar conforme sua API espera
     };
 
     try {
       const response = await fetch("http://localhost:8080/Atividade", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(atividadeData),
       });
 
+      const data = await response.json();
+      console.log(data);
       if (response.ok) {
         setMensagem("Atividade adicionada com sucesso!");
       } else {
@@ -62,12 +63,17 @@ const ActivityForm = () => {
       <form className="form-container" onSubmit={handleSubmit}>
         <div>
           <label>Título da atividade:</label>
-          <input type="text" value={titulo} onChange={e => setTitulo(e.target.value)} placeholder="Digite o nome da atividade" />
+          <input
+            type="text"
+            value={titulo}
+            onChange={(e) => setTitulo(e.target.value)}
+            placeholder="Digite o nome da atividade"
+          />
         </div>
         <div className="flex">
           <div>
             <label>Tipo de atividade:</label>
-            <select value={tipo} onChange={e => setTipo(e.target.value)}>
+            <select value={tipo} onChange={(e) => setTipo(e.target.value)}>
               <option value="">Selecione</option>
               <option>Palestra</option>
               <option>Curso</option>
@@ -78,15 +84,30 @@ const ActivityForm = () => {
           </div>
           <div className="datas">
             <label className="textDataInicio">Data início:</label>
-            <input value={dataI} onChange={e => setDataI(e.target.value)} type="text" placeholder="Dia / Mês / Ano" className="input-data"/>
+            <input
+              value={dataI}
+              onChange={(e) => setDataI(e.target.value)}
+              type="text"
+              placeholder="Dia / Mês / Ano"
+              className="input-data"
+            />
 
             <label className="textDataFim">Data fim:</label>
-            <input value={dataF} onChange={e => setDataF(e.target.value)} type="text" placeholder="Dia / Mês / Ano" className="input-data"/>
+            <input
+              value={dataF}
+              onChange={(e) => setDataF(e.target.value)}
+              type="text"
+              placeholder="Dia / Mês / Ano"
+              className="input-data"
+            />
           </div>
         </div>
         <div>
           <label>Descrição da Atividade:</label>
-          <textarea value={descricao} onChange={e => setDescricao(e.target.value)}></textarea>
+          <textarea
+            value={descricao}
+            onChange={(e) => setDescricao(e.target.value)}
+          ></textarea>
         </div>
         <div>
           <label>Anexar certificado/comprovante:</label>

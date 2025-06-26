@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CategoriaAtividade = void 0;
 const typeorm_1 = require("typeorm");
-const Atividade_1 = require("./Atividade");
 let CategoriaAtividade = class CategoriaAtividade {
 };
 exports.CategoriaAtividade = CategoriaAtividade;
@@ -31,10 +30,6 @@ __decorate([
     (0, typeorm_1.Column)({ type: "int", nullable: true }),
     __metadata("design:type", Number)
 ], CategoriaAtividade.prototype, "horasMaximasAproveitaveis", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => Atividade_1.Atividade, (atividade) => atividade.categoria),
-    __metadata("design:type", Array)
-], CategoriaAtividade.prototype, "atividades", void 0);
 exports.CategoriaAtividade = CategoriaAtividade = __decorate([
     (0, typeorm_1.Entity)("categorias_atividade")
 ], CategoriaAtividade);

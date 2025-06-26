@@ -36,10 +36,6 @@ __decorate([
     __metadata("design:type", String)
 ], Atividade.prototype, "descricao", void 0);
 __decorate([
-    (0, typeorm_1.Column)("int"),
-    __metadata("design:type", Number)
-], Atividade.prototype, "horasSolicitadas", void 0);
-__decorate([
     (0, typeorm_1.Column)({ type: "date" }),
     __metadata("design:type", Date)
 ], Atividade.prototype, "dataInicio", void 0);
@@ -64,16 +60,16 @@ __decorate([
     __metadata("design:type", String)
 ], Atividade.prototype, "documentoComprovanteUrl", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "text", nullable: true }),
-    __metadata("design:type", String)
-], Atividade.prototype, "observacoesAluno", void 0);
+    (0, typeorm_1.Column)({ type: "int", nullable: true }),
+    __metadata("design:type", Number)
+], Atividade.prototype, "horasAprovadas", void 0);
 __decorate([
     (0, typeorm_1.ManyToOne)(() => Aluno_1.Aluno, (aluno) => aluno.atividades),
     (0, typeorm_1.JoinColumn)({ name: "aluno_id" }),
     __metadata("design:type", Aluno_1.Aluno)
 ], Atividade.prototype, "aluno", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => Categoria_Atividade_1.CategoriaAtividade, (categoria) => categoria.atividades),
+    (0, typeorm_1.ManyToOne)(() => Categoria_Atividade_1.CategoriaAtividade),
     (0, typeorm_1.JoinColumn)({ name: "categoria_id" }),
     __metadata("design:type", Categoria_Atividade_1.CategoriaAtividade)
 ], Atividade.prototype, "categoria", void 0);
