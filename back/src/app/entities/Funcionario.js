@@ -9,40 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Aluno = void 0;
+exports.Funcionario = void 0;
 const typeorm_1 = require("typeorm");
-const Atividade_1 = require("./Atividade");
-let Aluno = class Aluno {
+let Funcionario = class Funcionario {
 };
-exports.Aluno = Aluno;
+exports.Funcionario = Funcionario;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], Aluno.prototype, "id", void 0);
+], Funcionario.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "varchar", length: 100 }),
     __metadata("design:type", String)
-], Aluno.prototype, "nome", void 0);
+], Funcionario.prototype, "nome", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "varchar", length: 100, unique: true }),
     __metadata("design:type", String)
-], Aluno.prototype, "email", void 0);
+], Funcionario.prototype, "email", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: "varchar", length: 20 }),
     __metadata("design:type", String)
-], Aluno.prototype, "senha", void 0);
+], Funcionario.prototype, "senha", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: "varchar", length: 20, unique: true }),
+    (0, typeorm_1.Column)({ type: "varchar", length: 25 }),
     __metadata("design:type", String)
-], Aluno.prototype, "matricula", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: "varchar", length: 25, unique: true }),
-    __metadata("design:type", String)
-], Aluno.prototype, "curso", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => Atividade_1.Atividade, (atividade) => atividade.aluno),
-    __metadata("design:type", Array)
-], Aluno.prototype, "atividades", void 0);
-exports.Aluno = Aluno = __decorate([
-    (0, typeorm_1.Entity)("alunos")
-], Aluno);
+], Funcionario.prototype, "cargo", void 0);
+exports.Funcionario = Funcionario = __decorate([
+    (0, typeorm_1.Entity)("funcionarios")
+], Funcionario);

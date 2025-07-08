@@ -42,6 +42,7 @@ const dotenv = __importStar(require("dotenv"));
 const Aluno_1 = require("../app/entities/Aluno");
 const Categoria_Atividade_1 = require("../app/entities/Categoria-Atividade");
 const Atividade_1 = require("../app/entities/Atividade");
+const Funcionario_1 = require("../app/entities/Funcionario");
 const path_1 = __importDefault(require("path"));
 dotenv.config();
 exports.AppDataSource = new typeorm_1.DataSource({
@@ -51,7 +52,7 @@ exports.AppDataSource = new typeorm_1.DataSource({
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    entities: [Aluno_1.Aluno, Categoria_Atividade_1.CategoriaAtividade, Atividade_1.Atividade],
+    entities: [Aluno_1.Aluno, Categoria_Atividade_1.CategoriaAtividade, Atividade_1.Atividade, Funcionario_1.Funcionario],
     migrations: [path_1.default.join(__dirname, "migrations", "**", "*.ts")],
     synchronize: false,
     logging: true,

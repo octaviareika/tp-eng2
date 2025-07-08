@@ -7,11 +7,18 @@ require("reflect-metadata");
 const data_source_1 = require("./database/data-source");
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
+const express_session_1 = __importDefault(require("express-session"));
 const app = (0, express_1.default)();
 const routes_1 = require("./app/routes/routes");
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
-app.use(routes_1.routes);
+app.use((0, express_session_1.default)({
+    secret: "chave-super-secreta", // use .env no mundo real
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false },
+}));
+app.use("/api", routes_1.routes);
 data_source_1.AppDataSource.initialize()
     .then(() => {
     console.log("Banco conectado com sucesso");

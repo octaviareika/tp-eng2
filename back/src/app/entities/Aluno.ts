@@ -12,6 +12,9 @@ export class Aluno {
   @Column({ type: "varchar", length: 100, unique: true })
   email!: string;
 
+  @Column({ type: "varchar", length: 20 })
+  senha!: string;
+
   @Column({ type: "varchar", length: 20, unique: true })
   matricula!: string;
 

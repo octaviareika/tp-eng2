@@ -6,5 +6,6 @@ export interface IAluno {
   email: string;
   matricula: string;
   curso: string;
+  senha: string;
   atividades: Atividade[];
 }
