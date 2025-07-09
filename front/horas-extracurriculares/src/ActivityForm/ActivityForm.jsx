@@ -32,17 +32,17 @@ const ActivityForm = () => {
       dataInicio: dataI,
       dataFim: dataF,
       categoriaNome: tipo,
-      alunoMatricula: "19.1.2021", // Exemplo de matrícula
       documentoComprovanteUrl: file ? file.name : "", // Aqui você pode ajustar conforme sua API espera
     };
 
     try {
-      const response = await fetch("http://localhost:8080/Atividade", {
+      const response = await fetch("http://localhost:8080/api/atividade", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(atividadeData),
+        credentials: "include",
       });
 
       const data = await response.json();
