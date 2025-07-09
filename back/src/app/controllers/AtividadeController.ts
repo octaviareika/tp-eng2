@@ -7,28 +7,34 @@ import {
 class AtividadeController {
   create = async (req: Request, res: Response) => {
     try {
+      if (req.session.usuario?.tipo === "funcionario") {
+        return res
+          .status(403)
+          .json({ message: "Apenas alunos podem adicionar atividades" });
+      }
       const {
         titulo,
         descricao,
         dataInicio,
         dataFim,
         documentoComprovanteUrl,
-        alunoMatricula,
         categoriaNome,
       } = req.body;
 
-      if (
-        !titulo ||
-        !descricao ||
-        !dataInicio ||
-        !categoriaNome ||
-        !alunoMatricula
-      ) {
+      if (!titulo || !descricao || !dataInicio || !categoriaNome) {
         return res.status(400).json({
           message:
-            "Os seguintes campos são obrigatórios: titulo, descricao, dataInicio, alunoMatricula e categoriaNome",
+            "Os seguintes campos são obrigatórios: titulo, descricao, dataInicio e categoriaNome",
         });
       }
+
+      const alunoMatricula = req.session.usuario?.matricula;
+      if (!alunoMatricula) {
+        return res
+          .status(400)
+          .json({ message: "Matrícula do aluno não encontrada na sessão" });
+      }
+
       const novaAtividade = await addAtividade({
         titulo,
         descricao,
