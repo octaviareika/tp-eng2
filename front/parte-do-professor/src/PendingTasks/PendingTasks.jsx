@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import dowloadIcon from "../assets/dowload.png";
 
 const PendingTask = () => {
     const [atividades, setAtividades] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [sortOrder, setSortOrder] = useState("recentes");
 
     useEffect(() => {
         const fetchAtividades = async () => {
@@ -21,17 +21,39 @@ const PendingTask = () => {
         fetchAtividades();
     }, []);
 
+    const sortedActivities = [...atividades].sort((a, b) => {
+        const dateA = new Date(a.dataInicio);
+        const dateB = new Date(b.dataInicio);
+        
+        return sortOrder === "recentes" 
+            ? dateB - dateA
+            : dateA - dateB;
+    });
+
     if (loading) {
         return <div className="content">Carregando...</div>;
     }
 
     return (
         <div className="content-container">
-            <h2>Atividades Pendentes:</h2>
+            <div className="title-sort-container">
+                <h2 className="page-title">Atividades Pendentes</h2>
+                <div className="sort-options">
+                    <span className="sort-label">Ordenar:</span>
+                    <select 
+                        value={sortOrder}
+                        onChange={(e) => setSortOrder(e.target.value)}
+                        className="sort-select"
+                    >
+                        <option value="recentes">Mais recentes</option>
+                        <option value="antigas">Mais antigas</option>
+                    </select>
+                </div>
+            </div>
             
             <div className="gray-container">
-                {atividades.length > 0 ? (
-                    atividades.map((atividade) => (
+                {sortedActivities.length > 0 ? (
+                    sortedActivities.map((atividade) => (
                         <div key={atividade.id} className="white-container">
                             <div className="atividade-info">
                                 <p>- Aluno: {atividade.aluno.nome} - {atividade.aluno.matricula}</p>
