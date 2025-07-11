@@ -2,15 +2,31 @@ import "reflect-metadata";
 import { AppDataSource } from "./database/data-source";
 import express from "express";
 import cors from "cors";
+import session from "express-session";
 
 const app = express();
 
 import { routes } from "./app/routes/routes";
 
-app.use(cors())
 app.use(express.json());
 
-app.use(routes);
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
+
+app.use(
+  session({
+    secret: "chave-super-secreta",
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false, sameSite: "lax" },
+  })
+);
+
+app.use("/api", routes);
 
 AppDataSource.initialize()
   .then(() => {
