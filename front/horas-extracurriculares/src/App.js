@@ -1,11 +1,15 @@
 import Sidebar from './SideBar/Sidebar.jsx';
 import ActivityForm from './ActivityForm/ActivityForm.jsx';
-import "./css/registro.css";
+import Login from './Login/Login.jsx';
+import "./css/login.css";
+// import "./css/registro.css";
+
 
 const App = () => (
   <div>
     {/* <Sidebar /> */}
-    <ActivityForm />
+    {/* <ActivityForm /> */}
+    <Login />
   </div>
 );
 

@@ -1,4 +1,3 @@
-/*
 import React from "react";
 import fotoPerfil from '../assets/icone-perfil.png';
 import logoUfop from '../assets/logo-ufop.png';
@@ -28,4 +27,3 @@ const Sidebar = () => (
 
 export default Sidebar;
 
-*/

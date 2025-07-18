@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #971919;
+    padding: 0 10px 0 30px;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .form-container {
+    background-color: #fdfdfd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    height: 80%;
+    width: 75%;
+    display: flex;
+    
+  }
+
+  .right-div {
+    width: 50%;
+    height: 100%;
+    padding: 50px 40px 0px 0px;
+    
+    justify-content: center; /*horizontal*/
+    /*align-items: center;*/ /*vertical*/
+
+  }
+
+  .text-block {
+    height: 40%;
+    text-align: center;
+  }
+  
+  .text h3{
+    margin: 0px 0px 30px 0px;
+  }
+
+  .text h5{
+    margin: 30px 0px 0px 0px;
+  }
+
+  .inputs {
+    height: 60%;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* faz os itens ficarem um embaixo do outro */
+    gap: 40px; /* controla o espaçamento entre os itens */
+
+  }
+
+  .inputs input {
+    align-self: center;
+    width: auto;
+    margin: -30px 0 0 0;
+    width: 70%;
+  }
+
+  .inputs label {
+    align-self: flex-start;
+  }
+
+  button {
+    align-self: center;
+    width: auto; /* garante que ele não se estique */
+  }
+  
+
+  .left-div {
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .logo-ufop {
+    width: 160px;
+    height: 320px;
+
+  }
