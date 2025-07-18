@@ -4,7 +4,7 @@ import "./css/registro.css";
 
 const App = () => (
   <div>
-    <Sidebar />
+    {/* <Sidebar /> */}
     <ActivityForm />
   </div>
 );

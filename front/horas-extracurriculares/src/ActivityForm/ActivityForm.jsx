@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import uploadIcon from "../assets/logo-upload-removed.png";
+import logoUfop from '../assets/logo-ufop.png';
 
 const ActivityForm = () => {
   const [fileName, setFileName] = useState("");
@@ -58,73 +59,12 @@ const ActivityForm = () => {
   };
 
   return (
-    <div className="content">
-      <h2>Registro de atividade</h2>
-      <form className="form-container" onSubmit={handleSubmit}>
-        <div>
-          <label>Título da atividade:</label>
-          <input
-            type="text"
-            value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
-            placeholder="Digite o nome da atividade"
-          />
-        </div>
-        <div className="flex">
-          <div>
-            <label>Tipo de atividade:</label>
-            <select value={tipo} onChange={(e) => setTipo(e.target.value)}>
-              <option value="">Selecione</option>
-              <option>Palestra</option>
-              <option>Curso</option>
-              <option>Workshop</option>
-              <option>Voluntariado</option>
-              <option>Outro</option>
-            </select>
-          </div>
-          <div className="datas">
-            <label className="textDataInicio">Data início:</label>
-            <input
-              value={dataI}
-              onChange={(e) => setDataI(e.target.value)}
-              type="text"
-              placeholder="Dia / Mês / Ano"
-              className="input-data"
-            />
 
-            <label className="textDataFim">Data fim:</label>
-            <input
-              value={dataF}
-              onChange={(e) => setDataF(e.target.value)}
-              type="text"
-              placeholder="Dia / Mês / Ano"
-              className="input-data"
-            />
-          </div>
+    <div className="content">
+      <form className="form-container" onSubmit={handleSubmit}>
+        <div className="logo-ufop-div">
+          <img className="logo-ufop" src={logoUfop} alt="Logo da UFOP" />
         </div>
-        <div>
-          <label>Descrição da Atividade:</label>
-          <textarea
-            value={descricao}
-            onChange={(e) => setDescricao(e.target.value)}
-          ></textarea>
-        </div>
-        <div>
-          <label>Anexar certificado/comprovante:</label>
-          <div className="upload" onClick={handleUploadClick}>
-            <img className="upload-icon" src={uploadIcon} alt="Upload Icon" />
-            <span className="file-name">{fileName}</span>
-          </div>
-          <input
-            type="file"
-            id="arquivo"
-            name="documentoComprovanteUrl"
-            style={{ display: "none" }}
-            onChange={handleFileChange}
-          />
-        </div>
-        <button type="submit">Adicionar Atividade</button>
-        {mensagem && <p className="message">{mensagem}</p>}
       </form>
     </div>
   );
