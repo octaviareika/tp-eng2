@@ -2,7 +2,7 @@ import React from "react";
 import fotoPerfil from '../assets/icone-perfil.png';
 import logoUfop from '../assets/logo-ufop.png';
 
-const Sidebar = () => (
+const SidebarFunc = () => (
 
     <div className="sidebar">
       <div className="painelAluno">Painel do Professor</div>
@@ -25,4 +25,4 @@ const Sidebar = () => (
     </div>
 );
 
-export default Sidebar;
+export default SidebarFunc;
