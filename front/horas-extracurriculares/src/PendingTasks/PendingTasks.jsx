@@ -10,7 +10,7 @@ const PendingTask = () => {
         const fetchAtividades = async () => {
             try {
                 const response = await fetch("http://localhost:8080/api/Funcionario/AtividadesPendentes", {
-                    credentials: 'include'
+                    // credentials: 'include'
                 });
     
             if (!response.ok) {
@@ -19,6 +19,7 @@ const PendingTask = () => {
             }
     
             const data = await response.json();
+            console.log("Dados recebidos:", data);
             setAtividades(data);
         } catch (error) {
             console.error("Erro detalhado:", error);
