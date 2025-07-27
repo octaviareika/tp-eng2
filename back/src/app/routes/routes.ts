@@ -17,16 +17,16 @@ const funcionarioController = new FuncionarioController();
 const authController = new AuthController();
 
 
-// Public routes (no authentication/authorization needed)
+// Rotas publicas (não precisa de atutenticação)
 routes.post("/register", authController.register);
 routes.post("/login", authController.login);
 routes.post("/logout", authController.logout);
 
-// Protected routes using middleware
-// For creating a category (assuming only employees can do this)
+// Rotas protegidas usando middleware
+// Para criar categoria (considerando que apenas funcionarios podem fazer isso)
 routes.post("/categoria", isAuthenticated, isFuncionario, categoriaController.create);
 
-// For submitting an activity (only by authenticated students)
+// Para adicionar uma atividade (apenas estudantes autenticados)
 routes.post(
   "/atividade",
   isAuthenticated,
@@ -35,7 +35,7 @@ routes.post(
   atividadeController.create
 );
 
-// For getting pending activities (only by authenticated employees)
+// Para ver atividades pendentes -pagina inicial do funcionário- (apenas funcionarios autenticados)
 routes.get(
   "/funcionario",
   isAuthenticated,
@@ -43,59 +43,12 @@ routes.get(
   funcionarioController.getAtividadesPendentes
 );
 
-// For updating activity status (only by authenticated employees)
+// para mudar o status de uma atividade (apenas funcionarios autenticados)
 routes.patch(
   "/funcionario/atividade/:id/status",
   isAuthenticated,
   isFuncionario,
   funcionarioController.atualizarStatusAtividade
 );
-// -----------------------------------------------------------------------
-import { Request, Response, NextFunction } from 'express';
-
-declare module 'express-session' {
-    interface SessionData {
-        usuario?: {
-            id: number;
-            nome: string;
-            tipo: 'aluno' | 'funcionario';
-            matricula?: string;
-            curso?: string;
-            cargo?: string;
-        };
-    }
-}
-
-routes.get("/login-teste/:tipo", (req: Request, res: Response) => {
-    const { tipo } = req.params;
-
-    // --- DADOS REAIS EXTRAÍDOS DO SEU BANCO DE DADOS ---
-    const alunoTeste = {
-        id: 2, // ID do Ciclano de Tal
-        nome: "Ciclano de Tal",
-        tipo: "aluno" as "aluno",
-        matricula: "654321", // Matrícula do Ciclano de Tal
-        curso: "Ciência da Computação" // Curso do Ciclano de Tal
-    };
-
-    const funcionarioTeste = {
-        id: 1, // ID do Athos
-        nome: "Athos",
-        tipo: "funcionario" as "funcionario",
-        cargo: "Especialista em Proteção" // Cargo do Athos
-    };
-    // ------------------------------------------
-
-    if (tipo === "aluno") {
-        req.session.usuario = alunoTeste;
-    } else if (tipo === "funcionario") {
-        req.session.usuario = funcionarioTeste;
-    } else {
-        return res.status(400).json({ message: "Tipo de usuário inválido para login de teste. Use 'aluno' ou 'funcionario'." });
-    }
-
-    res.status(200).json({ message: `Login de teste realizado como ${tipo}` });
-});
-
 
 export { routes };
