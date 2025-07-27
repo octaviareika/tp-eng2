@@ -9,13 +9,13 @@ const PendingTask = () => {
     useEffect(() => {
         const fetchAtividades = async () => {
             try {
-                const response = await fetch("http://localhost:8080/api/Funcionario/AtividadesPendentes", {
-                    // credentials: 'include'
+                const response = await fetch("http://localhost:8080/api/funcionario", {
+                    credentials: 'include'
                 });
     
             if (!response.ok) {
                 const errorData = await response.json().catch(() => null);
-                throw new Error(errorData?.message || `HTTP error! status: ${response.status}`);
+                throw new Error(errorData?.message || `HTTP error! status: ${response.status} (${response.statusText})`);
             }
     
             const data = await response.json();
@@ -33,7 +33,7 @@ const PendingTask = () => {
     }, []);
 
     const sortedActivities = [...atividades].sort((a, b) => {
-        const dateA = new Date(a.dataSubmissao); // Note que no backend é ordenado por dataSubmissao
+        const dateA = new Date(a.dataSubmissao); 
         const dateB = new Date(b.dataSubmissao);
         
         return sortOrder === "recentes" 

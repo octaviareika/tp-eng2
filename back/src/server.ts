@@ -8,8 +8,6 @@ const app = express();
 
 import { routes } from "./app/routes/routes";
 
-app.use(express.json());
-
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -25,6 +23,8 @@ app.use(
     cookie: { secure: false, sameSite: "lax" },
   })
 );
+
+app.use(express.json());
 
 app.use("/api", routes);
 

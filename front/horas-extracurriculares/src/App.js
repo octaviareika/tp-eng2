@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Sidebar from './SideBar/Sidebar.jsx';
-import SidebarFunc from './SideBar-Func/SideBarFunc.jsx'; // Sidebar do professor
+import SidebarFunc from './SideBar-Func/SideBarFunc.jsx'; 
 import ActivityForm from './ActivityForm/ActivityForm.jsx';
-import PendingTasks from './PendingTasks/PendingTasks.jsx'; // Página do professor
+import PendingTasks from './PendingTasks/PendingTasks.jsx'; 
 import "./css/registro.css";
 
 const App = () => {
@@ -23,8 +23,8 @@ const App = () => {
         <button onClick={() => setUserType('aluno')} style={{ padding: '10px 20px' }}>
           Entrar como Aluno
         </button>
-        <button onClick={() => setUserType('professor')} style={{ padding: '10px 20px' }}>
-          Entrar como Professor
+        <button onClick={() => setUserType('funcionario')} style={{ padding: '10px 20px' }}>
+          Entrar como Funcionário
         </button>
       </div>
     );
