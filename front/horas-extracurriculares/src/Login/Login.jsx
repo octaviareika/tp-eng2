@@ -1,66 +1,15 @@
 import React, { useState } from "react";
 import logoUfop from '../assets/logo-ufop.png';
 
-const ActivityForm = () => {
-  const [fileName, setFileName] = useState("");
-  const [descricao, setDescricao] = useState("");
-  const [titulo, setTitulo] = useState("");
-  const [tipo, setTipo] = useState("");
-  const [dataI, setDataI] = useState("");
-  const [dataF, setDataF] = useState("");
-  const [file, setFile] = useState(null);
-  const [mensagem, setMensagem] = useState("");
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setFile(file);
-    setFileName(file ? file.name : "");
-  };
-
-  const handleUploadClick = () => {
-    document.getElementById("arquivo").click();
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Se você ainda precisar enviar o arquivo, terá que usar FormData
-    // Mas se for apenas metadados sobre o arquivo (como URL), pode usar JSON
-    const atividadeData = {
-      titulo,
-      descricao,
-      dataInicio: dataI,
-      dataFim: dataF,
-      categoriaNome: tipo,
-      alunoMatricula: "19.1.2021", // Exemplo de matrícula
-      documentoComprovanteUrl: file ? file.name : "", // Aqui você pode ajustar conforme sua API espera
-    };
-
-    try {
-      const response = await fetch("http://localhost:8080/Atividade", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(atividadeData),
-      });
-
-      const data = await response.json();
-      console.log(data);
-      if (response.ok) {
-        setMensagem("Atividade adicionada com sucesso!");
-      } else {
-        setMensagem("Erro ao adicionar atividade.");
-      }
-    } catch (error) {
-      setMensagem("Erro ao conectar com o servidor.");
-    }
-  };
+const Login = () => {
+  const [Login, setLogin] = useState("");
+  const [Senha, setSenha] = useState("");
+  const [tipoPessoa, setTipoPessoa] = useState("");
 
   return (
 
     <div className="content">
-      <form className="form-container" onSubmit={handleSubmit}>
+      <form className="form-container">
         <div className="left-div">
           <img className="logo-ufop" src={logoUfop} alt="Logo da UFOP" />
         </div>
@@ -74,31 +23,49 @@ const ActivityForm = () => {
                 
             </div>
             <div className="inputs">
-                
 
-                
-                    <label>Login: </label>
-                    <input
-                        type="text"
-                        value={titulo}
-                        onChange={(e) => setTitulo(e.target.value)}
-                        placeholder="Digite o seu usuário"
-                    />
-                
-                
+                    <div className="pessoa">
+                      <div>
+                        <label>Aluno</label>
+                        <input type="radio" 
+                          name="pessoa" 
+                          value="aluno"
+                          onChange={(e) => setTipoPessoa(e.target.value)}
+                        />
+                      </div>
 
+                      <div>
+                        <label>Funcionário</label>        
+                        <input 
+                          type="radio" 
+                          name="pessoa" 
+                          value="funcionario" 
+                          onChange={(e) => setTipoPessoa(e.target.value)}
+                        />
+                      </div>
+                    </div>
 
-                    <label>Senha: </label>
-                    <input
-                        type="text"
-                        value={titulo}
-                        onChange={(e) => setTitulo(e.target.value)}
-                        placeholder="Digite a sua senha"
-                    />
-
-               
+                    <div className="login">
+                      <label>Login: </label>
+                      <input
+                          type="text"
+                          value={Login}
+                          onChange={(e) => setLogin(e.target.value)}
+                          placeholder="Digite o seu usuário"
+                      />
+                    </div>
                 
-                <button type="submit">Adicionar Atividade</button>
+                    <div className="login">
+                      <label>Senha: </label>
+                      <input
+                          type="password"
+                          value={Senha}
+                          onChange={(e) => setSenha(e.target.value)}
+                          placeholder="Digite a sua senha"
+                      />
+                    </div>
+                
+                <button type="submit">Entrar</button>
                 
 
             </div>
@@ -108,4 +75,4 @@ const ActivityForm = () => {
   );
 };
 
-export default ActivityForm;
+export default Login;

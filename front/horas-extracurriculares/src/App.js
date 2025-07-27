@@ -7,9 +7,9 @@ import "./css/login.css";
 
 const App = () => (
   <div>
-    {/* <Sidebar /> */}
+    {/* <Sidebar /> */} 
     {/* <ActivityForm /> */}
-    <Login />
+    <Login /> 
   </div>
 );
 

@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 body {
     margin: 0;
     height: 100vh;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #971919;
     padding: 0 10px 0 30px;
   }
@@ -17,7 +19,7 @@ body {
     background-color: #fdfdfd;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    height: 80%;
+    height: 85%;
     width: 75%;
     display: flex;
     
@@ -29,21 +31,22 @@ body {
     padding: 50px 40px 0px 0px;
     
     justify-content: center; /*horizontal*/
-    /*align-items: center;*/ /*vertical*/
 
   }
 
   .text-block {
-    height: 40%;
+    height: 35%;
     text-align: center;
   }
   
-  .text h3{
+  .text-block h3{
     margin: 0px 0px 30px 0px;
   }
 
-  .text h5{
+
+  .text-block h5{
     margin: 30px 0px 0px 0px;
+    color: #8d7f7f;
   }
 
   .inputs {
@@ -51,24 +54,65 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column; /* faz os itens ficarem um embaixo do outro */
-    gap: 40px; /* controla o espaçamento entre os itens */
+    gap: 33px; /* controla o espaçamento entre os itens */
 
   }
 
-  .inputs input {
-    align-self: center;
-    width: auto;
-    margin: -30px 0 0 0;
+  .pessoa {
+    display: flex;
     width: 70%;
+    margin: 0 auto;
   }
 
-  .inputs label {
-    align-self: flex-start;
+  .pessoa div{
+    height: 100%;
+    width: 50%;
+    color: #971919;
+  }
+
+  .pessoa div input {
+    align-self: center;
+    margin: -30px 0 0 0;
+    border: 1px solid #726767;
+    border-radius: 5px;
+    background-color: #ccc;
+    width: 90%;
+    height: 25%;
+  }
+
+
+  .login input {
+    align-self: center;
+    margin: -30px 0 0 0;
+    width: 90%;
+    height: 50%;
+    border: 1px solid #726767;
+    border-radius: 5px;
+    background-color: #ccc;
+  }
+
+
+  .login label {
+    display: block;
+    text-align: left;
+    padding: 0 0 2% 5%;
+    color: #971919;
   }
 
   button {
     align-self: center;
     width: auto; /* garante que ele não se estique */
+    border-radius: 25px;
+    border: none;
+    background-color: #971919;
+    color: white;
+    padding: 10px 45px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .form-container button:hover {
+    background-color: #8b0000;
   }
   
 
