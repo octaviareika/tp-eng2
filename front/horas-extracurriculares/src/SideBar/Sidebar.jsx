@@ -16,7 +16,7 @@ const Sidebar = () => (
             <li className="list"><a href="#">Página Inicial</a></li>
             <li className="list"><a href="#">Buscar Atividade</a></li>
             <li className="list"><a href="#">Histórico Completo</a></li>
-            <li className="list"><a href="#">Configurações</a></li>
+            <li className="list"><a href="/registrar-atividade">Registrar atividade</a></li>
           </ul>
           <div className="footer">
               <img className="logo-ufop" src={logoUfop} alt="Logo da UFOP" />

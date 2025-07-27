@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Sidebar from './SideBar/Sidebar.jsx';
 import SidebarFunc from './SideBar-Func/SideBarFunc.jsx';
 import ActivityForm from './ActivityForm/ActivityForm.jsx';
@@ -9,6 +10,7 @@ import './css/registro.css';
 const App = () => {
   const [userType, setUserType] = useState(null);
 
+  // A tela de seleção de usuário não precisa de roteamento
   if (!userType) {
     return (
       <div style={{ 
@@ -30,26 +32,36 @@ const App = () => {
     );
   }
 
+  // Quando um usuário é selecionado, envolvemos a aplicação com BrowserRouter
   return (
-    <div className="app-container">
-      <button 
-        onClick={() => setUserType(null)} 
-        style={{ position: 'absolute', top: '10px', left: '10px', padding: '5px 10px' }}
-      >
-        Voltar
-      </button>
-      {userType === 'aluno' ? (
-        <>
-          <Sidebar />
-          <MainContent />
-        </>
-      ) : (
-        <>
-          <SidebarFunc />
-          <PendingTasks />
-        </>
-      )}
-    </div>
+    <BrowserRouter>
+      <div className="app-container">
+        <button 
+          onClick={() => setUserType(null)} 
+          style={{ position: 'absolute', top: '10px', left: '10px', padding: '5px 10px' }}
+        >
+          Voltar
+        </button>
+        {userType === 'aluno' ? (
+          <>
+            <Sidebar />
+            <Routes>
+              <Route path="/" element={<MainContent />} />
+              <Route path="/registrar-atividade" element={<ActivityForm />} />
+              {/* Outras rotas de aluno podem ser adicionadas aqui */}
+            </Routes>
+          </>
+        ) : (
+          <>
+            <SidebarFunc />
+            <Routes>
+              <Route path="/" element={<PendingTasks />} />
+              {/* Outras rotas de funcionário podem ser adicionadas aqui */}
+            </Routes>
+          </>
+        )}
+      </div>
+    </BrowserRouter>
   );
 };
 

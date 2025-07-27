@@ -54,12 +54,16 @@ class AtividadeController {
   };
 
   getAtividadesByAluno = async (req: Request, res: Response) => {
-    try {
-      if (req.session.usuario?.tipo !== "aluno") {
-        return res.status(403).json({ message: "Acesso não autorizado" });
-      }
+    console.log(">>> ROTA GET /atividades/aluno ACESSADA <<<"); // <--- Adicione esta linha
 
-      const alunoId = req.session.usuario.id;
+    try {
+      // if (req.session.usuario?.tipo !== "aluno") {
+      //   return res.status(403).json({ message: "Acesso não autorizado" });
+      // }
+
+      console.log("Cheguei aq")
+
+      const alunoId = 1 
       if (!alunoId) {
         return res
           .status(400)
