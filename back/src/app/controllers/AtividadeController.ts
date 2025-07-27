@@ -11,13 +11,8 @@ interface MulterRequest extends Request {
 class AtividadeController {
   create = async (req: MulterRequest, res: Response) => {
     try {
-      const {
-        titulo,
-        descricao,
-        dataInicio,
-        dataFim,
-        categoriaNome,
-      } = req.body;
+      const { titulo, descricao, dataInicio, dataFim, categoriaNome } =
+        req.body;
 
       const documentoComprovanteUrl = req.file ? req.file.path : undefined;
 
@@ -41,10 +36,34 @@ class AtividadeController {
       });
       return res.status(201).json(novaAtividade);
     } catch (error: any) {
-      console.error("Erro ao criar atividade:", error);
+      console.error("Erro ao criar atividade: ", error);
       return res
         .status(500)
         .json({ message: "Erro ao criar atividade", error: error.message });
+    }
+  };
+
+  addComment = async (req: Request, res: Response) => {
+    try {
+      const { atividadeId, comentario } = req.body;
+
+      if (!atividadeId || !comentario) {
+        return res
+          .status(400)
+          .json({ message: "O campo comentário é obrigatório." });
+      }
+
+      if (req.session.usuario?.tipo != "funcionario") {
+        return res.status(403).json({
+          message: "Somente funcionários podem realizar comentários.",
+        });
+      }
+    } catch (error: any) {
+      console.error("Erro ao adicionar comentário: ", error);
+      return res.status(500).json({
+        message: "Erro ao adicionar comentário",
+        error: error.message,
+      });
     }
   };
 }
