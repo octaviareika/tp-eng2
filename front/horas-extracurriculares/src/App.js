@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import Sidebar from './SideBar/Sidebar.jsx';
-import SidebarFunc from './SideBar-Func/SideBarFunc.jsx'; // Sidebar do professor
+import SidebarFunc from './SideBar-Func/SideBarFunc.jsx';
 import ActivityForm from './ActivityForm/ActivityForm.jsx';
-import PendingTasks from './PendingTasks/PendingTasks.jsx'; // Página do professor
-import "./css/registro.css";
+import PendingTasks from './PendingTasks/PendingTasks.jsx';
+import MainContent from './Activity-Student/ActivityStudent.jsx';
+import './css/registro.css';
 
 const App = () => {
-  const [userType, setUserType] = useState(null); // 'aluno', 'professor' ou null
+  const [userType, setUserType] = useState(null);
 
-  // Se não houver usuário selecionado, mostre os botões de teste
   if (!userType) {
     return (
       <div style={{ 
@@ -30,21 +30,18 @@ const App = () => {
     );
   }
 
-  // Renderização condicional com base no tipo de usuário
   return (
-    <div>
-      {/* Botão para voltar ao seletor (opcional) */}
+    <div className="app-container">
       <button 
         onClick={() => setUserType(null)} 
         style={{ position: 'absolute', top: '10px', left: '10px', padding: '5px 10px' }}
       >
         Voltar
       </button>
-
       {userType === 'aluno' ? (
         <>
           <Sidebar />
-          <ActivityForm />
+          <MainContent />
         </>
       ) : (
         <>

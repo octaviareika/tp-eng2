@@ -1,4 +1,17 @@
-import { Request, Response } from "express";
+import "express-session";
+
+declare module "express-session" {
+  export interface SessionData {
+    usuario?: {
+      id: number;
+      nome: string;
+      tipo: "aluno" | "funcionario";
+      matricula?: string;
+      cargo?: string;
+      curso?: string;
+    };
+  }
+}import { Request, Response } from "express";
 import {
   addAtividade,
   atividadeRepository,

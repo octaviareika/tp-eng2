@@ -21,6 +21,8 @@ routes.post(
   upload.single("documentoComprovanteUrl"),
   atividadeController.create
 );
+routes.get("/atividades/aluno", atividadeController.getAtividadesByAluno);
+
 routes.post("/register", authController.register);
 routes.post("/login", authController.login);
 routes.post("/logout", authController.logout);
