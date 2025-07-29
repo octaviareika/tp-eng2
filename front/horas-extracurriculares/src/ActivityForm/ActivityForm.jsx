@@ -24,24 +24,22 @@ const ActivityForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Se você ainda precisar enviar o arquivo, terá que usar FormData
-    // Mas se for apenas metadados sobre o arquivo (como URL), pode usar JSON
-    const atividadeData = {
-      titulo,
-      descricao,
-      dataInicio: dataI,
-      dataFim: dataF,
-      categoriaNome: tipo,
-      documentoComprovanteUrl: file ? file.name : "", // Aqui você pode ajustar conforme sua API espera
-    };
+    const formData = new FormData();
+
+    formData.append("titulo", titulo);
+    formData.append("descricao", descricao);
+    formData.append("dataInicio", dataI);
+    formData.append("dataFim", dataF); 
+    formData.append("categoriaNome", tipo);  
+
+    if (file) {
+      formData.append("documentoComprovanteUrl", file);
+    }
 
     try {
       const response = await fetch("http://localhost:8080/api/atividade", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(atividadeData),
+        body: formData,
         credentials: "include",
       });
 
@@ -49,6 +47,13 @@ const ActivityForm = () => {
       console.log(data);
       if (response.ok) {
         setMensagem("Atividade adicionada com sucesso!");
+        setTitulo("");
+        setDescricao("");
+        setTipo("");
+        setDataI("");
+        setDataF("");
+        setFile(null);
+        setFileName("");
       } else {
         setMensagem("Erro ao adicionar atividade.");
       }
@@ -68,12 +73,13 @@ const ActivityForm = () => {
             value={titulo}
             onChange={(e) => setTitulo(e.target.value)}
             placeholder="Digite o nome da atividade"
+            required
           />
         </div>
         <div className="flex">
           <div>
             <label>Tipo de atividade:</label>
-            <select value={tipo} onChange={(e) => setTipo(e.target.value)}>
+            <select value={tipo} onChange={(e) => setTipo(e.target.value)} required>
               <option value="">Selecione</option>
               <option>Palestra</option>
               <option>Curso</option>
@@ -87,18 +93,20 @@ const ActivityForm = () => {
             <input
               value={dataI}
               onChange={(e) => setDataI(e.target.value)}
-              type="text"
+              type="date" 
               placeholder="Dia / Mês / Ano"
               className="input-data"
+              required
             />
 
             <label className="textDataFim">Data fim:</label>
             <input
               value={dataF}
               onChange={(e) => setDataF(e.target.value)}
-              type="text"
+              type="date" 
               placeholder="Dia / Mês / Ano"
               className="input-data"
+              required
             />
           </div>
         </div>
@@ -107,6 +115,7 @@ const ActivityForm = () => {
           <textarea
             value={descricao}
             onChange={(e) => setDescricao(e.target.value)}
+            required
           ></textarea>
         </div>
         <div>
@@ -121,6 +130,7 @@ const ActivityForm = () => {
             name="documentoComprovanteUrl"
             style={{ display: "none" }}
             onChange={handleFileChange}
+            required
           />
         </div>
         <button type="submit">Adicionar Atividade</button>

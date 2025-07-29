@@ -4,6 +4,7 @@ import { Aluno } from "../app/entities/Aluno";
 import { CategoriaAtividade } from "../app/entities/Categoria-Atividade";
 import { Atividade } from "../app/entities/Atividade";
 import { Funcionario } from "../app/entities/Funcionario";
+import { Comentario } from "../app/entities/Comentario";
 import path from "path";
 
 dotenv.config();
@@ -15,7 +16,7 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  entities: [Aluno, CategoriaAtividade, Atividade, Funcionario],
+  entities: [Aluno, CategoriaAtividade, Atividade, Funcionario, Comentario],
   migrations: [path.join(__dirname, "migrations", "**", "*.ts")],
   synchronize: true,
   logging: true,

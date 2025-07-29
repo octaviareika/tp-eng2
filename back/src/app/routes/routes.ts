@@ -5,19 +5,42 @@ import { CategoriaController } from "../controllers/CategoriaController";
 import { AtividadeController } from "../controllers/AtividadeController";
 import { AuthController } from "../controllers/AuthController";
 import { FuncionarioController } from "../controllers/FuncionarioController";
+import { ComentarioController } from "../controllers/ComentarioController";
+import {
+  isAuthenticated,
+  isAluno,
+  isFuncionario,
+} from "../middleware/authMiddleware";
 
 const routes: Router = Router();
-const upload = multer({ dest: "uploads/" }); // pasta onde os arquivos serão salvos
+const upload = multer({ dest: "uploads/" });
 
 const alunoController = new AlunoController();
 const categoriaController = new CategoriaController();
 const atividadeController = new AtividadeController();
 const funcionarioController = new FuncionarioController();
 const authController = new AuthController();
+const comentarioController = new ComentarioController();
 
-routes.post("/categoria", categoriaController.create);
+// Rotas publicas (não precisa de autenticação)
+routes.post("/register", authController.register);
+routes.post("/login", authController.login);
+routes.post("/logout", authController.logout);
+
+// Rotas protegidas usando middleware
+// Para criar categoria (considerando que apenas funcionarios podem fazer isso)
+routes.post(
+  "/categoria",
+  isAuthenticated,
+  isFuncionario,
+  categoriaController.create
+);
+
+// Para adicionar uma atividade (apenas estudantes autenticados)
 routes.post(
   "/atividade",
+  isAuthenticated,
+  isAluno,
   upload.single("documentoComprovanteUrl"),
   atividadeController.create
 );
@@ -27,8 +50,26 @@ routes.post("/register", authController.register);
 routes.post("/login", authController.login);
 routes.post("/logout", authController.logout);
 routes.get(
-  "/Funcionario/AtividadesPendentes",
+  "/funcionario",
+  isAuthenticated,
+  isFuncionario,
   funcionarioController.getAtividadesPendentes
+);
+
+// para mudar o status de uma atividade (apenas funcionarios autenticados)
+routes.patch(
+  "/funcionario/atividade/:id/status",
+  isAuthenticated,
+  isFuncionario,
+  funcionarioController.atualizarStatusAtividade
+);
+
+// para adicionar um comentário a uma atividade (apenas funcionários autenticados)
+routes.post(
+  "/comentario",
+  isAuthenticated,
+  isFuncionario,
+  comentarioController.create
 );
 
 export { routes };

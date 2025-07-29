@@ -25,8 +25,8 @@ const App = () => {
         <button onClick={() => setUserType('aluno')} style={{ padding: '10px 20px' }}>
           Entrar como Aluno
         </button>
-        <button onClick={() => setUserType('professor')} style={{ padding: '10px 20px' }}>
-          Entrar como Professor
+        <button onClick={() => setUserType('funcionario')} style={{ padding: '10px 20px' }}>
+          Entrar como Funcionário
         </button>
       </div>
     );

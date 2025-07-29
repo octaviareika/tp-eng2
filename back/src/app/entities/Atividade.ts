@@ -4,9 +4,11 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
+  OneToMany,
 } from "typeorm";
 import { Aluno } from "./Aluno";
 import { CategoriaAtividade } from "./Categoria-Atividade";
+import { Comentario } from "./Comentario";
 
 export enum StatusAtividade {
   PENDENTE = "Pendente",
@@ -55,4 +57,7 @@ export class Atividade {
   @ManyToOne(() => CategoriaAtividade)
   @JoinColumn({ name: "categoria_id" })
   categoria!: CategoriaAtividade;
+
+  @OneToMany(() => Comentario, (comentario) => comentario.atividade)
+  comentarios?: Comentario[];
 }
