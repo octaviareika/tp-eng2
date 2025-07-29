@@ -1,16 +1,23 @@
-import Sidebar from './SideBar/Sidebar.jsx';
-import ActivityForm from './ActivityForm/ActivityForm.jsx';
-import Login from './Login/Login.jsx';
-import "./css/login.css";
-// import "./css/registro.css";
+import Sidebar from './Pages/SideBar/Sidebar.jsx';
+import ActivityForm from './Pages/ActivityForm/ActivityForm.jsx';
+import Login from './Pages/Login/Login.jsx';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 
 const App = () => (
-  <div>
-    {/* <Sidebar /> */} 
-    {/* <ActivityForm /> */}
-    <Login /> 
-  </div>
+
+  <BrowserRouter>
+    <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/ActivityForm" element={
+              <div>
+              { <Sidebar /> } 
+              { <ActivityForm /> }
+            </div>
+        } />
+    </Routes>
+
+  </BrowserRouter>
 );
 
 export default App;

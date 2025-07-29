@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-body {
+  body {
     margin: 0;
-    height: 100vh;
-    font-family: 'Inter', sans-serif;
-    background-color: #971919;
-    padding: 0 10px 0 30px;
   }
+  
+  .loginContainer {
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
+      font-family: 'Inter', sans-serif;
+      background-color: #971919;
+      
+    }
   
   .content {
     display: flex;
@@ -15,7 +20,7 @@ body {
     height: 100vh;
   }
   
-  .form-container {
+  .formContainer {
     background-color: #fdfdfd;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -25,7 +30,7 @@ body {
     
   }
 
-  .right-div {
+  .rightDiv {
     width: 50%;
     height: 100%;
     padding: 50px 40px 0px 0px;
@@ -34,17 +39,17 @@ body {
 
   }
 
-  .text-block {
+  .textBlock {
     height: 35%;
     text-align: center;
   }
   
-  .text-block h3{
+  .textBlock h3{
     margin: 0px 0px 30px 0px;
   }
 
 
-  .text-block h5{
+  .textBlock h5{
     margin: 30px 0px 0px 0px;
     color: #8d7f7f;
   }
@@ -102,21 +107,37 @@ body {
   button {
     align-self: center;
     width: auto; /* garante que ele não se estique */
-    border-radius: 25px;
     border: none;
-    background-color: #971919;
     color: white;
-    padding: 10px 45px;
     font-size: 16px;
     cursor: pointer;
   }
 
-  .form-container button:hover {
+  .botaoEntrar {
+    background-color: #971919;
+    margin-left: 10px;
+    border-radius: 25px;
+    padding: 10px 45px;
+  }
+
+  .botaoCC {
+    background-color: #696464;
+    margin-right: 10px;
+    border-radius: 25px;
+    
+    padding: 10px 35px;
+  }
+
+  .botaoEntrar:hover {
     background-color: #8b0000;
+  }
+
+  .botaoCC:hover {
+    background-color: #4d4a4a;
   }
   
 
-  .left-div {
+  .leftDiv {
     width: 50%;
     height: 100%;
 
@@ -126,7 +147,7 @@ body {
 
   }
 
-  .logo-ufop {
+  .logoUfop {
     width: 160px;
     height: 320px;
 

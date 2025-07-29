@@ -1,5 +1,9 @@
+
 body {
   margin: 0;
+}
+
+.activityFormContainer {
   font-family: Arial, sans-serif;
 }
 
@@ -31,7 +35,7 @@ body {
   justify-content: center;
 }
 
-.my-profile {
+.myProfile {
   padding-top: 10px;
   font-size: 25px;
 }
@@ -72,48 +76,48 @@ body {
   font-weight: bold;
   margin-bottom: 20px;
 }
-.form-container {
+.formContainer {
   background-color: #d3d3d3;
   padding: 40px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
-.form-container div {
+.formContainer div {
   margin-bottom: 20px;
 }
-.form-container label {
+.formContainer label {
   display: block;
   margin-bottom: 5px;
 }
-.form-container input,
-.form-container select,
-.form-container textarea {
+.formContainer input,
+.formContainer select,
+.formContainer textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-.form-container .flex {
+.formContainer .flex {
   display: flex;
   justify-content: space-between;
 }
-.form-container .flex div {
+.formContainer .flex div {
   width: 48%;
 }
-.form-container textarea {
+.formContainer textarea {
   height: 120px;
 }
-.form-container .upload {
+.formContainer .upload {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 120px;
 }
-.form-container .upload span {
+.formContainer .upload span {
   color: #808080;
   font-size: 24px;
 }
-.form-container button {
+.formContainer button {
   background-color: #b22222;
   color: white;
   padding: 10px 20px;
@@ -121,7 +125,7 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
-.form-container button:hover {
+.formContainer button:hover {
   background-color: #8b0000;
 }
 
@@ -146,7 +150,7 @@ body {
   align-items: center;
 }
 
-.logo-ufop {
+.logoUfop {
   width: 100px;
   height: 200px;
   /*centralizar*/
@@ -155,12 +159,12 @@ body {
 
 }
 
-.alt-ufop {
+.altUfop {
   text-align: center;
   margin: 0 auto;
 }
 
-.size-icon {
+.sizeIcon {
   width: 100px;
   height: 100px;
   margin-right: 10px;
@@ -176,7 +180,7 @@ body {
   cursor: pointer;
 }
 
-.upload-icon {
+.uploadIcon {
   width: 100px;
   height: 50px;
 }
