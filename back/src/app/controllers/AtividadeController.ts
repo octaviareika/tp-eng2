@@ -44,12 +44,8 @@ class AtividadeController {
   };
 
   getAtividadesByAluno = async (req: Request, res: Response) => {
-    console.log(">>> ROTA GET /atividades/aluno ACESSADA <<<");
-
     try {
-      console.log("Cheguei aq")
-
-      const alunoId = 1 
+      const alunoId = req.session.usuario!.id;
       if (!alunoId) {
         return res
           .status(400)
