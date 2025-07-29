@@ -1,5 +1,4 @@
 import React from "react";
-import fotoPerfil from '../assets/icone-perfil.png';
 import logoUfop from '../assets/logo-ufop.png';
 
 const Sidebar = () => (
@@ -7,9 +6,6 @@ const Sidebar = () => (
     <div className="sidebar">
       <div className="painelAluno">Painel do Aluno</div>
           <div className="profile">
-
-              <img className="size-icon" src={fotoPerfil} alt="Foto de perfil da UFOP" />
-
             <span className="my-profile">Meu Perfil</span>
           </div>
           <ul>
