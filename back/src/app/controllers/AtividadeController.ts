@@ -36,7 +36,7 @@ class AtividadeController {
       });
       return res.status(201).json(novaAtividade);
     } catch (error: any) {
-      console.error("Erro ao criar atividade:", error);
+      console.error("Erro ao criar atividade: ", error);
       return res
         .status(500)
         .json({ message: "Erro ao criar atividade", error: error.message });
@@ -44,13 +44,9 @@ class AtividadeController {
   };
 
   getAtividadesByAluno = async (req: Request, res: Response) => {
-    console.log(">>> ROTA GET /atividades/aluno ACESSADA <<<"); // <--- Adicione esta linha
+    console.log(">>> ROTA GET /atividades/aluno ACESSADA <<<");
 
     try {
-      // if (req.session.usuario?.tipo !== "aluno") {
-      //   return res.status(403).json({ message: "Acesso não autorizado" });
-      // }
-
       console.log("Cheguei aq")
 
       const alunoId = 1 
@@ -62,8 +58,8 @@ class AtividadeController {
 
       const atividades = await atividadeRepository.find({
         where: { aluno: { id: alunoId } },
-        relations: ["categoria"], // Inclui os dados da categoria
-        order: { dataSubmissao: "DESC" }, // Ordena pelas mais recentes
+        relations: ["categoria"],
+        order: { dataSubmissao: "DESC" },
       });
 
       return res.status(200).json(atividades);

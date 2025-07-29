@@ -10,7 +10,6 @@ import './css/registro.css';
 const App = () => {
   const [userType, setUserType] = useState(null);
 
-  // A tela de seleção de usuário não precisa de roteamento
   if (!userType) {
     return (
       <div style={{ 

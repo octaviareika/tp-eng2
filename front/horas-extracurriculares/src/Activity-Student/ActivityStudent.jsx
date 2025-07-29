@@ -8,8 +8,8 @@ const MainContent = () => {
   useEffect(() => {
     const fetchAtividades = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/atividades/aluno', {
-          credentials: 'include', // Essencial para enviar o cookie de sessão
+        const response = await fetch('http://localhost:8080/api/aluno', {
+          credentials: 'include',
         });
         if (response.ok) {
           const data = await response.json();
@@ -25,7 +25,7 @@ const MainContent = () => {
     };
 
     fetchAtividades();
-  }, []); // O array vazio faz com que o useEffect rode apenas uma vez
+  }, []);
 
   if (loading) {
     return <div className="main-content"><p>Carregando atividades...</p></div>;

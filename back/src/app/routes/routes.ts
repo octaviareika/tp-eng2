@@ -44,11 +44,16 @@ routes.post(
   upload.single("documentoComprovanteUrl"),
   atividadeController.create
 );
-routes.get("/atividades/aluno", atividadeController.getAtividadesByAluno);
 
-routes.post("/register", authController.register);
-routes.post("/login", authController.login);
-routes.post("/logout", authController.logout);
+// Para ver atividades criadas pelo proprio aluno -pagina inicial do aluno (apenas alunos autenticados)
+routes.get(
+  "/aluno",
+  isAuthenticated,
+  isAluno,
+  atividadeController.getAtividadesByAluno
+);
+
+// Para ver atividades pendentes -pagina inicial do funcionário- (apenas funcionarios autenticados)
 routes.get(
   "/funcionario",
   isAuthenticated,
@@ -71,5 +76,52 @@ routes.post(
   isFuncionario,
   comentarioController.create
 );
+
+// -----------------------------------------------------------------------
+import { Request, Response, NextFunction } from 'express';
+
+declare module 'express-session' {
+    interface SessionData {
+        usuario?: {
+            id: number;
+            nome: string;
+            tipo: 'aluno' | 'funcionario';
+            matricula?: string;
+            curso?: string;
+            cargo?: string;
+        };
+    }
+}
+
+routes.get("/login-teste/:tipo", (req: Request, res: Response) => {
+    const { tipo } = req.params;
+
+    // --- DADOS REAIS EXTRAÍDOS DO SEU BANCO DE DADOS ---
+    const alunoTeste = {
+        id: 2, // ID do Ciclano de Tal
+        nome: "Ciclano de Tal",
+        tipo: "aluno" as "aluno",
+        matricula: "654321", // Matrícula do Ciclano de Tal
+        curso: "Ciência da Computação" // Curso do Ciclano de Tal
+    };
+
+    const funcionarioTeste = {
+        id: 1, // ID do Athos
+        nome: "Athos",
+        tipo: "funcionario" as "funcionario",
+        cargo: "Especialista em Proteção" // Cargo do Athos
+    };
+    // ------------------------------------------
+
+    if (tipo === "aluno") {
+        req.session.usuario = alunoTeste;
+    } else if (tipo === "funcionario") {
+        req.session.usuario = funcionarioTeste;
+    } else {
+        return res.status(400).json({ message: "Tipo de usuário inválido para login de teste. Use 'aluno' ou 'funcionario'." });
+    }
+
+    res.status(200).json({ message: `Login de teste realizado como ${tipo}` });
+});
 
 export { routes };
