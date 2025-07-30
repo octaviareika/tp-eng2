@@ -11,6 +11,7 @@ import {
   isAluno,
   isFuncionario,
 } from "../middleware/authMiddleware";
+import path from "path"
 
 const routes: Router = Router();
 const upload = multer({ dest: "uploads/" });
@@ -76,5 +77,23 @@ routes.post(
   isFuncionario,
   comentarioController.create
 );
+
+routes.get("/download/:filename",
+  isAuthenticated,
+  isFuncionario,
+  (req, res) => {
+    const filename = req.params.filename;
+    const filePath = path.join(__dirname, "..", "..", "..", "uploads", filename);
+
+    res.download(filePath, (err) => {
+      if (err) {
+        console.error("Erro ao fazer download:", err);
+        return res
+          .status(404)
+          .json({ message: "Arquivo não encontrado ou erro no download." });
+      }
+    });
+  }
+)
 
 export { routes };

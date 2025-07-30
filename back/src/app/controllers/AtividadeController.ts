@@ -14,7 +14,7 @@ class AtividadeController {
       const { titulo, descricao, dataInicio, dataFim, categoriaNome } =
         req.body;
 
-      const documentoComprovanteUrl = req.file ? req.file.path : undefined;
+      const documentoComprovanteUrl = req.file ? req.file.filename : undefined;
 
       if (!titulo || !descricao || !dataInicio || !categoriaNome) {
         return res.status(400).json({
@@ -34,7 +34,7 @@ class AtividadeController {
         alunoMatricula,
         categoriaNome,
       });
-      return res.status(201).json(novaAtividade);
+      return res.status(201).json({novaAtividade, downloadUrl: '${req.protocol}://${req.get("host")}/download/${req.file?.filename}'});
     } catch (error: any) {
       console.error("Erro ao criar atividade: ", error);
       return res
