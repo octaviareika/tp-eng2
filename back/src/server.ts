@@ -20,7 +20,7 @@ app.use(
     secret: "chave-super-secreta",
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false, sameSite: "lax" },
+    cookie: { secure: false, sameSite: "none" },
   })
 );
 
