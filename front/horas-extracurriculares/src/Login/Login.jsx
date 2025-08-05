@@ -16,22 +16,55 @@ const Login = () => {
   const navigate = useNavigate();
 
   // 3. Crie a função para lidar com o envio do formulário
-  const handleSubmit = (event) => {
-    // Impede que a página recarregue ao enviar o formulário
-    event.preventDefault();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
-    // Lógica de validação
-    if (!login || !senha || !tipoPessoa) {
-      setErro("Por favor, preencha todos os campos.");
-      return; // Para a execução da função aqui
-    }
+        if (!login || !senha || !tipoPessoa) {
+            setErro("Por favor, preencha todos os campos.");
+            return;
+        }
+        
+        setErro("");
 
-    // Se a validação passar, limpe o erro e navegue
-    setErro("");
-    console.log("Login validado com sucesso!");
-    // Navega para a próxima página
-    navigate("/ActivityForm");
-  };
+        try {
+            // Faz a chamada POST usando fetch para a sua API de login
+            const response = await fetch('http://localhost:8080/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                email: login, 
+                senha: senha,
+                tipo: tipoPessoa 
+            })
+            });
+
+            if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Falha no login');
+            }
+
+            const data = await response.json();
+
+            // Armazena o token e o tipo de usuário no localStorage
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('userType', tipoPessoa); 
+            console.log("Login validado com sucesso!");
+
+            // Agora, a navegação é condicional com base no tipo de usuário
+            if (tipoPessoa === "aluno") {
+            navigate("/aluno"); // Navega para a rota do aluno
+            } else if (tipoPessoa === "funcionario") {
+            navigate("/funcionario"); // Navega para a rota do funcionário
+            }
+            
+        } catch (error) {
+            setErro(error.message);
+            console.error("Erro no login:", error);
+        }
+    };
 
   return (
     <div className={styles.loginContainer}>

@@ -9,18 +9,42 @@ import './css/registro.css';
 import Login from './Login/Login.jsx'
 
 const App = () => (
-
   <BrowserRouter>
     <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/ActivityForm" element={
-              <div>
-              { <Sidebar /> } 
-              { <ActivityForm /> }
-            </div>
-        } />
+      {/* Rota inicial para a página de login */}
+      <Route path="/" element={<Login />} />
+      
+      {/* Rotas específicas para alunos */}
+      <Route 
+        path="/aluno/*" 
+        element={
+          <>
+            <Sidebar />
+            <Routes>
+              {/* Página inicial do aluno */}
+              <Route path="/" element={<MainContent />} />
+              <Route path="registrar-atividade" element={<ActivityForm />} />
+            </Routes>
+          </>
+        } 
+      />
+      
+      {/* Rotas específicas para funcionários */}
+      <Route 
+        path="/funcionario/*" 
+        element={
+          <>
+            <SidebarFunc />
+            <Routes>
+              {/* Página inicial do funcionário */}
+              <Route path="/" element={<PendingTasks />} />
+              {/* Adicione outras rotas de funcionário aqui, se precisar */}
+            </Routes>
+          </>
+        } 
+      />
+      
     </Routes>
-
   </BrowserRouter>
 );
 
