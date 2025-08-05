@@ -5,6 +5,7 @@ const PendingTask = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [sortOrder, setSortOrder] = useState("recentes");
+    const [searchTerm, setSearchTerm] = useState(""); // Estado para o termo de busca
 
     useEffect(() => {
         const fetchAtividades = async () => {
@@ -13,46 +14,60 @@ const PendingTask = () => {
                     credentials: 'include'
                 });
     
-            if (!response.ok) {
-                const errorData = await response.json().catch(() => null);
-                throw new Error(errorData?.message || `HTTP error! status: ${response.status} (${response.statusText})`);
-            }
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => null);
+                    throw new Error(errorData?.message || `HTTP error! status: ${response.status}`);
+                }
     
-            const data = await response.json();
-            console.log("Dados recebidos:", data);
-            setAtividades(data);
-        } catch (error) {
-            console.error("Erro detalhado:", error);
-            setError(error.message || "Erro ao buscar atividades");
-        } finally {
-            setLoading(false);
-        }
+                const data = await response.json();
+                setAtividades(data);
+            } catch (error) {
+                setError(error.message || "Erro ao buscar atividades");
+            } finally {
+                setLoading(false);
+            }
         };
 
         fetchAtividades();
     }, []);
 
-    const sortedActivities = [...atividades].sort((a, b) => {
-        const dateA = new Date(a.dataSubmissao); 
-        const dateB = new Date(b.dataSubmissao);
-        
-        return sortOrder === "recentes" 
-            ? dateB - dateA
-            : dateA - dateB;
+    // Filtra atividades com base no termo de busca (aluno, matrícula ou título)
+    const filteredActivities = atividades.filter((atividade) => {
+        const searchLower = searchTerm.toLowerCase();
+        return (
+            atividade.aluno?.nome.toLowerCase().includes(searchLower) ||
+            atividade.aluno?.matricula.toLowerCase().includes(searchLower) ||
+            atividade.titulo.toLowerCase().includes(searchLower)
+        );
     });
 
-    if (loading) {
-        return <div className="content">Carregando...</div>;
-    }
+    // Ordena as atividades filtradas
+    const sortedActivities = [...filteredActivities].sort((a, b) => {
+        const dateA = new Date(a.dataSubmissao); 
+        const dateB = new Date(b.dataSubmissao);
+        return sortOrder === "recentes" ? dateB - dateA : dateA - dateB;
+    });
 
-    if (error) {
-        return <div className="content">Erro: {error}</div>;
-    }
+    if (loading) return <div className="content">Carregando...</div>;
+    if (error) return <div className="content">Erro: {error}</div>;
 
     return (
         <div className="content-container">
             <div className="title-sort-container">
-                <h2 className="page-title">Atividades Pendentes</h2>
+                <div className="title-search-container">
+                    <h2 className="page-title">Atividades Pendentes</h2>
+                    {/* SearchBox integrada */}
+                    <div className="search-box">
+                        <input
+                            type="text"
+                            placeholder="Buscar atividade..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="search-input"
+                        />
+                    </div>
+                </div>
+                
                 <div className="sort-options">
                     <span className="sort-label">Ordenar:</span>
                     <select 
@@ -79,17 +94,13 @@ const PendingTask = () => {
                                     {atividade.dataFim && ` a ${new Date(atividade.dataFim).toLocaleDateString('pt-BR')}`}
                                 </p>
                             </div>
-                            
                             <div className="divider"></div>
-                            
-                            <button className="visualizar-btn">
-                                Visualizar
-                            </button>
+                            <button className="visualizar-btn">Visualizar</button>
                         </div>
                     ))
                 ) : (
                     <div className="white-container">
-                        <p>Não há atividades pendentes no momento.</p>
+                        <p>Nenhuma atividade encontrada.</p>
                     </div>
                 )}
             </div>
