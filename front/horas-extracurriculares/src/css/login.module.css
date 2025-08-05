@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+  body {
+    margin: 0;
+  }
+
+  .loginContainer {
+      margin: 0;
+      height: 100vh;
+      width: 100vw;
+      font-family: 'Inter', sans-serif;
+      background-color: #971919;
+      
+    }
+  
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .formContainer {
+    background-color: #fdfdfd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    height: 85%;
+    width: 75%;
+    display: flex;
+    
+  }
+
+  .rightDiv {
+    width: 50%;
+    height: 100%;
+    padding: 50px 40px 0px 0px;
+    
+    justify-content: center; /*horizontal*/
+
+  }
+
+  .textBlock {
+    height: 35%;
+    text-align: center;
+  }
+  
+  .textBlock h3{
+    margin: 0px 0px 30px 0px;
+  }
+
+
+  .textBlock h5{
+    margin: 30px 0px 0px 0px;
+    color: #8d7f7f;
+  }
+
+  .inputs {
+    height: 60%;
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* faz os itens ficarem um embaixo do outro */
+    gap: 33px; /* controla o espaçamento entre os itens */
+
+  }
+
+  .pessoa {
+    display: flex;
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .pessoa div{
+    height: 100%;
+    width: 50%;
+    color: #971919;
+  }
+
+  .pessoa div input {
+    align-self: center;
+    margin: -30px 0 0 0;
+    border: 1px solid #726767;
+    border-radius: 5px;
+    background-color: #ccc;
+    width: 90%;
+    height: 25%;
+  }
+
+
+  .login input {
+    align-self: center;
+    margin: -30px 0 0 0;
+    width: 90%;
+    height: 50%;
+    border: 1px solid #726767;
+    border-radius: 5px;
+    background-color: #ccc;
+  }
+
+
+  .login label {
+    display: block;
+    text-align: left;
+    padding: 0 0 2% 5%;
+    color: #971919;
+  }
+
+  button {
+    align-self: center;
+    width: auto; /* garante que ele não se estique */
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .botaoEntrar {
+    background-color: #971919;
+    margin-left: 10px;
+    border-radius: 25px;
+    padding: 10px 45px;
+  }
+
+  .botaoCC {
+    background-color: #696464;
+    margin-right: 10px;
+    border-radius: 25px;
+    
+    padding: 10px 35px;
+  }
+
+  .botaoEntrar:hover {
+    background-color: #8b0000;
+  }
+
+  .botaoCC:hover {
+    background-color: #4d4a4a;
+  }
+  
+
+  .leftDiv {
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .mensagemErro {
+    padding-top: 10px;
+  }
+
+  .logoUfop {
+    width: 160px;
+    height: 320px;
+
+  }

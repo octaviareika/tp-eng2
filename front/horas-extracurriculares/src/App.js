@@ -6,62 +6,22 @@ import ActivityForm from './ActivityForm/ActivityForm.jsx';
 import PendingTasks from './PendingTasks/PendingTasks.jsx';
 import MainContent from './Activity-Student/ActivityStudent.jsx';
 import './css/registro.css';
+import Login from './Login/Login.jsx'
 
-const App = () => {
-  const [userType, setUserType] = useState(null);
+const App = () => (
 
-  if (!userType) {
-    return (
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        height: '100vh',
-        flexDirection: 'column',
-        gap: '20px'
-      }}>
-        <h2>Modo de Teste</h2>
-        <button onClick={() => setUserType('aluno')} style={{ padding: '10px 20px' }}>
-          Entrar como Aluno
-        </button>
-        <button onClick={() => setUserType('funcionario')} style={{ padding: '10px 20px' }}>
-          Entrar como Funcionário
-        </button>
-      </div>
-    );
-  }
+  <BrowserRouter>
+    <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/ActivityForm" element={
+              <div>
+              { <Sidebar /> } 
+              { <ActivityForm /> }
+            </div>
+        } />
+    </Routes>
 
-  // Quando um usuário é selecionado, envolvemos a aplicação com BrowserRouter
-  return (
-    <BrowserRouter>
-      <div className="app-container">
-        <button 
-          onClick={() => setUserType(null)} 
-          style={{ position: 'absolute', top: '10px', left: '10px', padding: '5px 10px' }}
-        >
-          Voltar
-        </button>
-        {userType === 'aluno' ? (
-          <>
-            <Sidebar />
-            <Routes>
-              <Route path="/" element={<MainContent />} />
-              <Route path="/registrar-atividade" element={<ActivityForm />} />
-              {/* Outras rotas de aluno podem ser adicionadas aqui */}
-            </Routes>
-          </>
-        ) : (
-          <>
-            <SidebarFunc />
-            <Routes>
-              <Route path="/" element={<PendingTasks />} />
-              {/* Outras rotas de funcionário podem ser adicionadas aqui */}
-            </Routes>
-          </>
-        )}
-      </div>
-    </BrowserRouter>
-  );
-};
+  </BrowserRouter>
+);
 
 export default App;
