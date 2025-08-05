@@ -9,6 +9,8 @@ import path from "path";
 
 dotenv.config();
 
+console.log('DB_PASSWORD do .env:', process.env.DB_PASSWORD);
+
 export const AppDataSource = new DataSource({
   type: "postgres",
   host: process.env.DB_HOST,
