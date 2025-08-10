@@ -30,10 +30,10 @@ const Login = () => {
             // Faz a chamada POST usando fetch para a sua API de login
             const response = await fetch('http://localhost:8080/api/login', {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: 'include',
             body: JSON.stringify({
                 email: login, 
                 senha: senha,
