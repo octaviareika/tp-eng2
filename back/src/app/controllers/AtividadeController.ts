@@ -61,7 +61,7 @@ class AtividadeController {
       return res.status(200).json(atividades);
     } catch (error: any) {
       console.error("Erro ao buscar atividades do aluno:", error);
-      return res.status(500).json({ message: "Erro ao buscar atividades" });
+      return res.status(500).json({ message: "Erro ao buscar atividades" , error: error.message});
     }
   };
 }
