@@ -1,4 +1,4 @@
-import { Atividade } from "../entities/Atividade";
+import { Atividade, StatusAtividade } from "../entities/Atividade";
 import { IAtividade } from "../interfaces/IAtividade";
 import { AppDataSource } from "../../database/data-source";
 import { CategoriaAtividade } from "../entities/Categoria-Atividade";
@@ -31,6 +31,16 @@ export const addAtividade = async (dados: Omit<IAtividade, "id">) => {
   });
 
   return await atividadeRepository.save(novaAtividade);
+};
+
+export const deleteAtividadePendente = async (id: number, alunoId: number) => {
+  const atividade = await atividadeRepository.findOne({
+    where: { id: id, aluno: { id: alunoId }, status: StatusAtividade.PENDENTE },
+  });
+  if (!atividade) {
+    throw new Error("Atividade não encontrada");
+  }
+  return await atividadeRepository.remove(atividade);
 };
 
 export { atividadeRepository };

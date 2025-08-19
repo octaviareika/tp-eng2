@@ -119,4 +119,11 @@ routes.get(
   funcionarioController.getCurrentUserFuncionario
 );
 
+routes.delete(
+  "/atividade/:id",
+  isAuthenticated,
+  isAluno,
+  atividadeController.deleteAtividade
+);
+
 export { routes };

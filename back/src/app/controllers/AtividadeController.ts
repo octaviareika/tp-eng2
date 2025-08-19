@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import {
   addAtividade,
   atividadeRepository,
+  deleteAtividadePendente,
 } from "../repositories/AtividadeRepository";
 
 interface MulterRequest extends Request {
@@ -34,7 +35,11 @@ class AtividadeController {
         alunoMatricula,
         categoriaNome,
       });
-      return res.status(201).json({novaAtividade, downloadUrl: '${req.protocol}://${req.get("host")}/download/${req.file?.filename}'});
+      return res.status(201).json({
+        novaAtividade,
+        downloadUrl:
+          '${req.protocol}://${req.get("host")}/download/${req.file?.filename}',
+      });
     } catch (error: any) {
       console.error("Erro ao criar atividade: ", error);
       return res
@@ -61,8 +66,22 @@ class AtividadeController {
       return res.status(200).json(atividades);
     } catch (error: any) {
       console.error("Erro ao buscar atividades do aluno:", error);
-      return res.status(500).json({ message: "Erro ao buscar atividades" , error: error.message});
+      return res
+        .status(500)
+        .json({ message: "Erro ao buscar atividades", error: error.message });
     }
+  };
+
+  deleteAtividade = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const alunoId = req.session.usuario!.id;
+    if (!id) {
+      return res
+        .status(400)
+        .json({ message: "O id é obrigatório para deletar!" });
+    }
+    await deleteAtividadePendente(parseInt(id), alunoId);
+    return res.status(200).json({ message: "Atividade deletada com sucesso!" });
   };
 }
 
