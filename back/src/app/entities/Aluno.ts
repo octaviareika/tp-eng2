@@ -18,7 +18,7 @@ export class Aluno {
   @Column({ type: "varchar", length: 20, unique: true })
   matricula!: string;
 
-  @Column({ type: "varchar", length: 25, unique: true })
+  @Column({ type: "varchar", length: 40 })
   curso!: string;
 
   @OneToMany(() => Atividade, (atividade) => atividade.aluno)
