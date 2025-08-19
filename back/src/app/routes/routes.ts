@@ -111,4 +111,11 @@ routes.get(
   alunoController.getCurrentUserAluno
 );
 
+routes.get(
+  "/funcionario/perfil",
+  isAuthenticated,
+  isFuncionario,
+  funcionarioController.getCurrentUserFuncionario
+);
+
 export { routes };
