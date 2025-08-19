@@ -1,24 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import fotoPerfil from '../assets/icone-perfil.png';
 import logoUfop from '../assets/logo-ufop.png';
 import { Link } from "react-router-dom";
 
-
-const SidebarFunc = () => {
-  const [userName, setUserName] = useState ('');
-
-  useEffect(() =>{
-    fetch('/api/user/profile', { credentials: 'include' })
-      .then(response => response.json())
-      .then(data => setUserName(data.name))
-      .catch(() => setUserName('Meu Perfil'));
-  }, []);
-
+const SidebarFunc = () => (
   <div className="sidebar">
     <div className="painelAluno">Painel do Professor</div>
     <div className="profile">
       <img className="size-icon" src={fotoPerfil} alt="Foto de perfil da UFOP" />
-      <span className="my-profile">{userName || 'Meu Perfil'}</span>
+      <span className="my-profile">Meu Perfil</span>
     </div>
     <ul>
       <li className="list"><Link to="/funcionario">Atividades Pendentes</Link></li>
@@ -30,6 +20,6 @@ const SidebarFunc = () => {
       <img className="logo-ufop" src={logoUfop} alt="Logo da UFOP" />
     </div>
   </div>
-};
+);
 
 export default SidebarFunc;
