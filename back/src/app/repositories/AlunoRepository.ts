@@ -13,4 +13,12 @@ export const addAluno = async (dados: Omit<IAluno, "id" | "atividades">) => {
   return await alunoRepository.save(novoAluno);
 };
 
+export const getSenhabyEmailAluno = async (email: string) => {
+  const aluno = await alunoRepository.findOne({
+    where: { email },
+    select: ["senha"],
+  });
+  return aluno ? aluno.senha : null;
+};
+
 export { alunoRepository };

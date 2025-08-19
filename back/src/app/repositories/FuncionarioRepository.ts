@@ -11,4 +11,12 @@ export const addFuncionario = async (dados: Omit<IFuncionario, "id">) => {
   return await funcionarioRepository.save(novoFuncionario);
 };
 
+export const getSenhabyEmailFunc = async (email: string) => {
+  const funcionario = await funcionarioRepository.findOne({
+    where: { email },
+    select: ["senha"],
+  });
+  return funcionario ? funcionario.senha : null;
+};
+
 export { funcionarioRepository };

@@ -2,8 +2,13 @@ import { Request, Response } from "express";
 import {
   funcionarioRepository,
   addFuncionario,
+  getSenhabyEmailFunc,
 } from "../repositories/FuncionarioRepository";
-import { alunoRepository, addAluno } from "../repositories/AlunoRepository";
+import {
+  alunoRepository,
+  addAluno,
+  getSenhabyEmailAluno,
+} from "../repositories/AlunoRepository";
 
 export class AuthController {
   async register(req: Request, res: Response) {
@@ -109,5 +114,30 @@ export class AuthController {
       res.clearCookie("connect.sid");
       return res.status(200).json({ message: "Logout realizado" });
     });
+  }
+
+  async recoverPassword(req: Request, res: Response) {
+    try {
+      const email = req.query?.email as string;
+      if (!email) {
+        return res.status(400).json({ message: "Email é obrigatório!" });
+      }
+
+      let senha = await getSenhabyEmailAluno(email);
+
+      if (!senha) {
+        senha = await getSenhabyEmailFunc(email);
+      }
+
+      if (!senha) {
+        return res.status(404).json({ message: "Usuário não encontrado!" });
+      }
+
+      return res.status(200).json({ senha });
+    } catch (error: any) {
+      return res
+        .status(500)
+        .json({ message: "Erro ao recuperar senha!", error: error.message });
+    }
   }
 }

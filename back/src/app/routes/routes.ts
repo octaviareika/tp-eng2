@@ -27,6 +27,7 @@ const comentarioController = new ComentarioController();
 routes.post("/register", authController.register);
 routes.post("/login", authController.login);
 routes.post("/logout", authController.logout);
+routes.get("/recuperar-senha", authController.recoverPassword);
 
 // Rotas protegidas usando middleware
 // Para criar categoria (considerando que apenas funcionarios podem fazer isso)

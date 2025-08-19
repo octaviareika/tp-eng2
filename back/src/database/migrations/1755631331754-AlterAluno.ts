@@ -9,12 +9,10 @@ export class AlterAluno1755631331754 implements MigrationInterface {
     );
     await queryRunner.query(`ALTER TABLE "alunos" DROP COLUMN "curso"`);
 
-    // ✅ Adicionar com DEFAULT para preencher registros existentes
     await queryRunner.query(
       `ALTER TABLE "alunos" ADD "curso" character varying(40) NOT NULL DEFAULT 'Não Informado'`
     );
 
-    // ✅ Opcional: remover o default depois (se não quiser default para novos registros)
     await queryRunner.query(
       `ALTER TABLE "alunos" ALTER COLUMN "curso" DROP DEFAULT`
     );
