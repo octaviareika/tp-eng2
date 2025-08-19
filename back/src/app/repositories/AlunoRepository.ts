@@ -13,4 +13,12 @@ export const addAluno = async (dados: Omit<IAluno, "id" | "atividades">) => {
   return await alunoRepository.save(novoAluno);
 };
 
+export const findAluno = async (nome: string, id: number) => {
+  const aluno = await alunoRepository.findOneBy({ nome: nome, id: id });
+  if (!aluno) {
+    throw new Error("Nenhum aluno encontrado!");
+  }
+  return aluno;
+};
+
 export { alunoRepository };

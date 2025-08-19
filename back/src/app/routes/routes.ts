@@ -11,7 +11,7 @@ import {
   isAluno,
   isFuncionario,
 } from "../middleware/authMiddleware";
-import path from "path"
+import path from "path";
 
 const routes: Router = Router();
 const upload = multer({ dest: "uploads/" });
@@ -78,12 +78,20 @@ routes.post(
   comentarioController.create
 );
 
-routes.get("/download/:filename",
+routes.get(
+  "/download/:filename",
   isAuthenticated,
   isFuncionario,
   (req, res) => {
     const filename = req.params.filename;
-    const filePath = path.join(__dirname, '..', '..', '..', 'uploads', filename);
+    const filePath = path.join(
+      __dirname,
+      "..",
+      "..",
+      "..",
+      "uploads",
+      filename
+    );
 
     res.download(filePath, (err) => {
       if (err) {
@@ -94,6 +102,13 @@ routes.get("/download/:filename",
       }
     });
   }
-)
+);
+
+routes.get(
+  "/aluno/perfil",
+  isAuthenticated,
+  isAluno,
+  alunoController.getCurrentUserAluno
+);
 
 export { routes };
