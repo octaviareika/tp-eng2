@@ -1,29 +1,40 @@
+import { useEffect, useState } from 'react';
 import React from "react";
 import fotoPerfil from '../assets/icone-perfil.png';
 import logoUfop from '../assets/logo-ufop.png';
 import { Link } from "react-router-dom";
 
-const Sidebar = () => (
+const Sidebar = () => {
 
-    <div className="sidebar">
-      <div className="painelAluno">Painel do Aluno</div>
-          <div className="profile">
+  const [userName, setUserName] = useState('');
 
-              <img className="size-icon" src={fotoPerfil} alt="Foto de perfil da UFOP" />
+  useEffect(() => {
+    fetch('http://localhost:8080/api/aluno/perfil', { credentials: 'include' })
+      .then(response => response.json())
+      .then(data => setUserName(data.nome))
+      .catch(() => setUserName('Meu Perfil'));
+  }, []);
 
-            <span className="my-profile">Meu Perfil</span>
-          </div>
-          <ul>
-            <li className="list"><Link to="/aluno">Página Inicial</Link></li>
-            <li className="list"><Link to="/aluno/buscar-atividade">Buscar Atividade</Link></li>
-            <li className="list"><Link to="/aluno/historico-completo">Histórico Completo</Link></li>
-            <li className="list"><Link to="/aluno/registrar-atividade">Registrar atividade</Link></li>
-          </ul>
-          <div className="footer">
-              <img className="logo-ufop" src={logoUfop} alt="Logo da UFOP" />
-          </div>
-      
-    </div>
-);
+  return (
+  <div className="sidebar">
+    <div className="painelAluno">Painel do Aluno</div>
+        <div className="profile">
+
+            <img className="size-icon" src={fotoPerfil} alt="Foto de perfil da UFOP" />
+
+          <span className="my-profile">{userName || 'Meu Perfil'}</span>
+        </div>
+        <ul>
+          <li className="list"><Link to="/aluno">Página Inicial</Link></li>
+          <li className="list"><Link to="/aluno/buscar-atividade">Buscar Atividade</Link></li>
+          <li className="list"><Link to="/aluno/historico-completo">Histórico Completo</Link></li>
+          <li className="list"><Link to="/aluno/registrar-atividade">Registrar atividade</Link></li>
+        </ul>
+        <div className="footer">
+            <img className="logo-ufop" src={logoUfop} alt="Logo da UFOP" />
+        </div>
+    
+  </div>);
+};
 
 export default Sidebar;
