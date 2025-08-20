@@ -27,6 +27,8 @@
     height: 85%;
     width: 75%;
     display: flex;
+
+    overflow: auto;
     
   }
 
