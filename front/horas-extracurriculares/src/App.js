@@ -7,6 +7,7 @@ import PendingTasks from './PendingTasks/PendingTasks.jsx';
 import MainContent from './Activity-Student/ActivityStudent.jsx';
 import './css/registro.css';
 import Login from './Login/Login.jsx';
+import RegisterUser from './RegisterUser/RegisterUser.jsx';
 
 // ✅ Layouts com Outlet
 const AlunoLayout = () => (
@@ -31,6 +32,7 @@ const App = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Login />} />
+      <Route path="/register" element={<RegisterUser />} />
       
       {/* Rotas do aluno */}
       <Route path="/aluno" element={<AlunoLayout />}>

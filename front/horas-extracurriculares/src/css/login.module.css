@@ -156,3 +156,50 @@
     height: 320px;
 
   }
+
+
+
+.inputs select {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #726767;
+  border-radius: 5px;
+  background-color: #ccc;
+  color: #555;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  margin-top: 5px; /* Adjust spacing as needed */
+}
+
+/* Estilo para as opções dentro do dropdown */
+.inputs select option {
+  background-color: #fff;
+  color: #333;
+}
+
+.inlineInputs {
+  display: flex;
+  gap: 20px;          /* space between Nome and Matrícula */
+  width: 100%;
+}
+
+.inlineInputs .login {
+  flex: 1;            /* both take equal space */
+  display: flex;
+  flex-direction: column;
+}
+
+.inlineInputs .login input {
+  width: 76%;        /* fill only their container */
+  margin: 0;          /* remove the negative margin */
+  height: 35px;       /* consistent height */
+  border: 1px solid #726767;
+  border-radius: 5px;
+  background-color: #ccc;
+  padding: 5px 10px;
+}
+
+.login input:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}

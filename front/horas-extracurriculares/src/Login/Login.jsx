@@ -15,6 +15,10 @@ const Login = () => {
   // 2. Inicialize o hook useNavigate
   const navigate = useNavigate();
 
+  const irParaCriarConta = () => {
+    navigate("/register")
+  }
+
   // 3. Crie a função para lidar com o envio do formulário
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -130,7 +134,7 @@ const Login = () => {
               </div>
 
               <div>
-                <button type="button" className={styles.botaoCC}>
+                <button type="button" className={styles.botaoCC} onClick={irParaCriarConta}>
                   Criar conta
                 </button>
                 <button type="submit" className={styles.botaoEntrar}>
