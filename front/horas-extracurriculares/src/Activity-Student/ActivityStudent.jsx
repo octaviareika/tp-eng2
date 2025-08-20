@@ -4,6 +4,9 @@ import "../css/activity.css";
 const MainContent = () => {
   const [atividades, setAtividades] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [fill, setFill] = React.useState(0);
+
+  const META_HORAS = 360;
 
   useEffect(() => {
     const fetchAtividades = async () => {
@@ -25,6 +28,23 @@ const MainContent = () => {
     };
     fetchAtividades();
   }, []);
+
+  // Função para calcular horas aprovadas
+  const calcularHorasAprovadas = () => {
+    return atividades
+      .filter((atividade) => atividade.status.toLowerCase() === "aprovado")
+      .reduce((total, atividade) => {
+        const horas = parseInt(atividade.horasAprovadas) || 0;
+        return total + horas;
+      }, 0);
+  };
+
+  // Função para calcular porcentagem
+  const calcularPorcentagem = () => {
+    const horasAprovadas = calcularHorasAprovadas();
+    const porcentagem = Math.min((horasAprovadas / META_HORAS) * 100, 100);
+    return Math.round(porcentagem);
+  };
 
   // Função para excluir atividade
   const handleDelete = async (atividadeId) => {
@@ -55,6 +75,16 @@ const MainContent = () => {
     }
   };
 
+  const horasAprovadas = calcularHorasAprovadas();
+  const porcentagem = calcularPorcentagem();
+
+  React.useEffect(() => {
+    requestAnimationFrame(() => setFill(porcentagem));
+  }, [porcentagem]);
+
+  const barColor =
+    porcentagem < 33 ? "#b22222" : porcentagem < 65 ? "#e6a700" : "#2e7d32";
+
   if (loading) {
     return (
       <div className="dashboard-content">
@@ -66,9 +96,15 @@ const MainContent = () => {
   return (
     <div className="dashboard-content">
       <h3>Atividades Extracurriculares completas:</h3>
-      <div className="progress-bar">
-        <div className="progress" style={{ width: "60%" }}>
-          216/360h - 60% Concluído
+      <div className="progressContainer">
+        <div
+          className="progressFill"
+          style={{ width: `${fill}%`, backgroundColor: barColor }}
+          aria-valuenow={porcentagem}
+          aria-valuemin={0}
+          aria-valuemax={100}
+        >
+          {horasAprovadas}/{META_HORAS}h - {porcentagem}% Concluído
         </div>
       </div>
 
