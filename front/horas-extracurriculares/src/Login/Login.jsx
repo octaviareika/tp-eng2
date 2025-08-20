@@ -70,12 +70,19 @@ const Login = () => {
       <div className={styles.content}>
         <form className={styles.formContainer} onSubmit={handleSubmit}>
           <div className={styles.leftDiv}>
-            <img
-              className={styles.logoUfop}
-              src={logoUfop}
-              alt="Logo da UFOP"
-            />
-            {erro && <p className={styles.mensagemErro}>{erro}</p>}
+            <div className={styles.divlogoUfop}>
+              <img
+                className={styles.logoUfop}
+                src={logoUfop}
+                alt="Logo da UFOP"
+              />
+            </div>
+            <div className={styles.divForgotPassword}>
+              <button type="button" className={styles.botaoForgotPassword}>
+                Esqueci minha Senha
+              </button>
+              {erro && <p className={styles.mensagemErro}>{erro}</p>}
+            </div>
           </div>
 
           <div className={styles.rightDiv}>
