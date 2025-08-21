@@ -1,11 +1,13 @@
 import { Router } from "express";
 import multer from "multer";
+import fs from "fs";
 import { AlunoController } from "../controllers/AlunoController";
 import { CategoriaController } from "../controllers/CategoriaController";
 import { AtividadeController } from "../controllers/AtividadeController";
 import { AuthController } from "../controllers/AuthController";
 import { FuncionarioController } from "../controllers/FuncionarioController";
 import { ComentarioController } from "../controllers/ComentarioController";
+import { FileController } from "../controllers/FileController";
 import {
   isAuthenticated,
   isAluno,
@@ -22,6 +24,7 @@ const atividadeController = new AtividadeController();
 const funcionarioController = new FuncionarioController();
 const authController = new AuthController();
 const comentarioController = new ComentarioController();
+const fileController = new FileController();
 
 // Rotas publicas (não precisa de autenticação)
 routes.post("/register", authController.register);
@@ -83,26 +86,14 @@ routes.get(
   "/download/:filename",
   isAuthenticated,
   isFuncionario,
-  (req, res) => {
-    const filename = req.params.filename;
-    const filePath = path.join(
-      __dirname,
-      "..",
-      "..",
-      "..",
-      "uploads",
-      filename
-    );
+  fileController.downloadComprovante
+);
 
-    res.download(filePath, (err) => {
-      if (err) {
-        console.error("Erro ao fazer download:", err);
-        return res
-          .status(404)
-          .json({ message: "Arquivo não encontrado ou erro no download." });
-      }
-    });
-  }
+routes.get(
+  "/view/:filename",
+  isAuthenticated,
+  isFuncionario,
+  fileController.viewComprovante
 );
 
 routes.get(
