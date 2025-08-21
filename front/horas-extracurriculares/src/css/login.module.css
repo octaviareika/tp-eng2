@@ -28,16 +28,16 @@
     width: 75%;
     display: flex;
 
-    overflow: auto;
+    
     
   }
 
   .rightDiv {
-    width: 50%;
-    height: 100%;
+    flex: 1;
     padding: 50px 40px 0px 0px;
     
     justify-content: center; /*horizontal*/
+    overflow: auto;
 
   }
 

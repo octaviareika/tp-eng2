@@ -227,7 +227,7 @@ const RegisterUser = () => {
               )}
 
               <div>
-                <button type="submit" className={styles.botaoCC}>
+                <button type="submit" className={styles.botaoEntrar}>
                   Cadastrar
                 </button>
               </div>
