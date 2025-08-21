@@ -90,13 +90,6 @@ routes.get(
 );
 
 routes.get(
-  "/view/:filename",
-  isAuthenticated,
-  isFuncionario,
-  fileController.viewComprovante
-);
-
-routes.get(
   "/aluno/perfil",
   isAuthenticated,
   isAluno,
