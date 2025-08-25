@@ -1,0 +1,72 @@
+/* Adicionar essas regras ao seu CSS do PendingTask */
+
+.certificate-section {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+.certificate-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background-color: #17a2b8;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.view-btn:hover {
+  background-color: #138496;
+  text-decoration: none;
+  color: white;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.download-btn:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+}
+
+.download-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+  .certificate-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .view-btn,
+  .download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

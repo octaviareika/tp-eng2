@@ -46,3 +46,6 @@
     * Funcionário seleciona "Salvar alterações"
     * Sistema registra alteração e notifica aluno (H13)
     
+## Diagrama de Casos de Uso
+
+![Diagrama de caso de uso](/Images/diagrama_de_caso_de_uso_Engenharia_II.png)

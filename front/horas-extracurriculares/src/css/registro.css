@@ -1,0 +1,555 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.painelAluno {
+  background-color: rgb(143, 143, 143);
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid white;
+  margin: 0px 0px 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar {
+  width: 17%;
+  background-color: #971919;
+  color: white;
+  padding: 0px;
+  height: 100vh;
+  position: fixed;
+  overflow-y: auto;
+}
+.sidebar .profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-direction: column;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+
+.my-profile {
+  padding-top: 10px;
+  font-size: 25px;
+}
+.sidebar .profile div {
+  width: 40px;
+  height: 40px;
+  background-color: #d3d3d3;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar ul li {
+  margin-bottom: 15px;
+}
+.sidebar ul li a {
+  color: #d3d3d3;
+  text-decoration: none;
+}
+.sidebar ul li a:hover {
+  color: white;
+}
+.sidebar .footer {
+  margin-top: 40px;
+  color: #d3d3d3;
+}
+.sidebar .footer img {
+  margin-bottom: 10px;
+}
+.content {
+  margin-left: 0;
+  padding: 20px;
+}
+.content h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.form-container {
+  background-color: #d3d3d3;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-container div {
+  margin-bottom: 20px;
+}
+.form-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-container input,
+.form-container select,
+.form-container textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.form-container .flex {
+  display: flex;
+  justify-content: space-between;
+}
+.form-container .flex div {
+  width: 48%;
+}
+.form-container textarea {
+  height: 120px;
+}
+.form-container .upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+}
+.form-container .upload span {
+  color: #808080;
+  font-size: 24px;
+}
+.form-container button {
+  background-color: #b22222;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.form-container button:hover {
+  background-color: #8b0000;
+}
+
+.list {
+  background-color: rgb(143, 143, 143);
+  border: 1px solid #999898;
+  padding: 10px;
+  margin-left: 7px;
+  margin-right: 7px;
+  border-radius: 25px; /* Borda circular */
+  color: white;
+  /*deixar a fonte pro centro*/
+  text-align: center;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+.footer {
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-ufop {
+  width: 100px;
+  height: 200px;
+  /*centralizar*/
+  display: block;
+  margin: 0 auto;
+}
+
+.alt-ufop {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.size-icon {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+#arquivo {
+  display: none;
+}
+
+.upload {
+  height: 120px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.upload-icon {
+  width: 100px;
+  height: 50px;
+}
+
+.textDataFim {
+  margin: 0px 15px 0px 15px;
+  text-align: center;
+}
+
+.textDataInicio {
+  margin: 0px 15px;
+}
+
+.datas {
+  display: flex;
+  align-items: center;
+  height: 13vh;
+  margin: 0px;
+}
+
+/* Estilos para os containers */
+.content-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.gray-container {
+  background-color: #f5f5f5; /* Cor cinza de fundo */
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.white-container {
+  background-color: white;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para o conteúdo das atividades */
+.atividade-info {
+  margin-bottom: 10px;
+}
+
+.atividade-info p {
+  margin: 5px 0;
+  color: #333;
+}
+
+.divider {
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 10px 0;
+}
+
+.visualizar-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0;
+  float: right;
+}
+
+.visualizar-btn:hover {
+  text-decoration: underline;
+}
+
+/* Limpa o float */
+.white-container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Container do título e ordenação */
+.title-sort-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* ===== LISTA DE ATIVIDADES ===== */
+.sort-options {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-label {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.sort-select {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.content-container {
+  padding: 20px;
+  background-color: #e0e0e0; /* cinza de fundo */
+  flex: 1;
+}
+
+.centered-container {
+  min-height: 70vh; /* se quiser ainda ocupar a tela toda */
+  padding-top: 50px; /* ocupa quase a tela inteira */
+  transform: translateY(20px);
+}
+
+.title-sort-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Card branco */
+.white-container {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 6px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/* Informações do card */
+.atividade-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #222;
+  font-size: 14px;
+  flex: 1;
+}
+
+/* Botão visualizar estilo vinho oval */
+.visualizar-btn {
+  background-color: #b22222;
+  border: none;
+  padding: 8px 20px;
+  color: white;
+  border-radius: 25px; /* arredondado */
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.visualizar-btn:hover {
+  background-color: #8b0000;
+}
+
+/* Página de detalhes */
+.details-container {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.details-container h2 {
+  margin-bottom: 15px;
+  color: #333;
+  align-items: flex-end;
+}
+
+/* Botões Aprovar/Reprovar */
+.details-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.approve-btn {
+  background-color: #2e7d32;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.approve-btn:hover {
+  background-color: #1b5e20;
+}
+
+.reject-btn {
+  background-color: #c62828;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.reject-btn:hover {
+  background-color: #8e0000;
+}
+
+/* Botão Voltar */
+.back-btn {
+  margin-top: 25px;
+  background-color: #9e9e9e;
+  border: none;
+  padding: 8px 16px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background-color: #616161;
+}
+
+.date-separator {
+  margin-left: 50px;
+}
+
+/* ===== FORMULÁRIOS (APROVAR / REPROVAR) ===== */
+.approve-form,
+.reject-form {
+  background: #e0e0e0;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.approve-form label,
+.reject-form label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.approve-form input,
+.approve-form textarea,
+.reject-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.approve-form textarea,
+.reject-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Estilos gerais dos botões */
+.approve-form button,
+.reject-form button {
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Botão RETORNAR (primeiro da approve-form e último da reject-form) */
+.approve-form button:first-of-type,
+.reject-form button:first-of-type {
+  background-color: #9e9e9e;
+  color: white;
+}
+
+.approve-form button:first-of-type:hover,
+.reject-form button:first-of-type:hover {
+  background-color: #616161;
+}
+
+/* Botão APROVAR (segundo da approve-form) */
+.approve-form button:last-of-type {
+  background-color: #2e7d32;
+  color: white;
+}
+
+.approve-form button:last-of-type:hover {
+  background-color: #1b5e20;
+}
+
+/* Botão REPROVAR (primeiro da reject-form) */
+.reject-form button:last-of-type {
+  background-color: #c62828;
+  color: white;
+}
+
+.reject-form button:last-of-type:hover {
+  background-color: #8e0000;
+}
+
+/* Botões agrupados no canto inferior direito */
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-row label {
+  min-width: 150px;
+  font-weight: bold;
+}
+
+.form-row input,
+.form-row textarea {
+  flex: 1;
+  padding: 5px;
+}
+
+/*Botão de download*/
+
+.download-btn {
+  display: inline-block;
+  background-color: #c62828;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.download-btn:hover {
+  background-color: #8e0000;
+}

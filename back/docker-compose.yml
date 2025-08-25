@@ -3,7 +3,7 @@ version: "3.8"
 services:
   db:
     image: postgres:15-alpine
-    container_name: postgres_container
+    container_name: postgres_container1
     restart: always
     environment:
       POSTGRES_USER: ${DB_USER}
