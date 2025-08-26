@@ -52,22 +52,33 @@ Esta plataforma foi desenvolvida para ajudar os alunos a registrar, acompanhar e
 
 # Passos para rodar a aplicação
 
-## Instale os requisitos
+## Instale os requisitos - Tanto na pasta Back quanto na Front/horas-extracurriculares
 
 ```
 npm install
 ```
 
-## Rode o banco
+## Rode o banco - Na pasta Back
 
 ```
 docker-compose up
 ```
+## Executar migrações - Na pasta Back
 
-## Inicie a aplicação
+```
+npm run migration:run
+```
+
+## Inicie o servidor - Na pasta Back
 
 ```
 npm run dev
+```
+
+## Rodar aplicação - Na pasta Front/horas-extracurriculares
+
+```
+npm start
 ```
 
 **© 2024 Universidade Federal de Ouro Preto - Todos os direitos reservados**
